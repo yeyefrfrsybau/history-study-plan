@@ -3,664 +3,1509 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>P1 Section 1 — Study Guide</title>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<title>O-Level Pakistan Studies — Complete Study Guide 2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
   :root {
     --ink: #1a1208;
-    --paper: #faf6ee;
-    --paper2: #f3ede0;
-    --accent: #8b2020;
-    --gold: #b5862a;
-    --muted: #6b5e4a;
-    --border: #d4c4a0;
-    --green: #1a4a2e;
-    --blue-dark: #1a2a4a;
+    --paper: #faf7f2;
+    --cream: #f2ece0;
+    --gold: #b8860b;
+    --gold-light: #e8d48a;
+    --red: #8b1a1a;
+    --red-light: #f5e8e8;
+    --teal: #1a5f5f;
+    --teal-light: #e0f0f0;
+    --blue: #1a3a6b;
+    --blue-light: #e8eef8;
+    --border: rgba(26,18,8,0.12);
+    --serif: 'Source Serif 4', Georgia, serif;
+    --display: 'Playfair Display', Georgia, serif;
+    --mono: 'JetBrains Mono', monospace;
   }
-  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
   body {
+    font-family: var(--serif);
     background: var(--paper);
     color: var(--ink);
-    font-family: 'Source Serif 4', Georgia, serif;
-    font-size: 16px;
-    line-height: 1.75;
-    max-width: 860px;
-    margin: 0 auto;
-    padding: 2rem 1.5rem 4rem;
+    min-height: 100vh;
   }
+
+  /* HEADER */
   .masthead {
-    text-align: center;
-    border-top: 3px solid var(--ink);
-    border-bottom: 3px solid var(--ink);
-    padding: 1.25rem 0;
-    margin-bottom: 0.4rem;
+    background: var(--ink);
+    color: var(--paper);
+    padding: 2.5rem 2rem 2rem;
+    position: relative;
+    overflow: hidden;
   }
-  .masthead-sub {
+  .masthead::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 40px,
+      rgba(184,134,11,0.04) 40px,
+      rgba(184,134,11,0.04) 41px
+    );
+  }
+  .masthead-inner { position: relative; max-width: 960px; margin: 0 auto; }
+  .masthead-label {
+    font-family: var(--mono);
     font-size: 11px;
-    letter-spacing: 0.18em;
+    letter-spacing: 0.15em;
+    color: var(--gold-light);
+    margin-bottom: 0.75rem;
     text-transform: uppercase;
-    color: var(--muted);
-    margin-bottom: 0.3rem;
   }
   .masthead h1 {
-    font-family: 'Playfair Display', Georgia, serif;
-    font-size: 2.4rem;
+    font-family: var(--display);
+    font-size: clamp(2rem, 5vw, 3.5rem);
     font-weight: 900;
     line-height: 1.1;
-    color: var(--ink);
+    margin-bottom: 0.5rem;
   }
-  .masthead-rule {
-    border: none;
-    border-top: 1px solid var(--border);
-    margin: 0.6rem auto;
-    width: 60%;
+  .masthead h1 em {
+    color: var(--gold-light);
+    font-style: normal;
   }
-  .nav-strip {
-    display: flex;
-    gap: 0;
-    border-bottom: 2px solid var(--ink);
-    margin-bottom: 2rem;
-    overflow-x: auto;
+  .masthead-sub {
+    font-size: 1rem;
+    color: rgba(250,247,242,0.65);
+    font-style: italic;
+    margin-top: 0.5rem;
   }
-  .nav-btn {
-    padding: 0.55rem 1.1rem;
-    font-family: 'Source Serif 4', serif;
-    font-size: 13px;
-    background: none;
-    border: none;
-    border-right: 1px solid var(--border);
-    cursor: pointer;
-    color: var(--muted);
-    white-space: nowrap;
-    transition: background 0.15s, color 0.15s;
-  }
-  .nav-btn:hover { background: var(--paper2); color: var(--ink); }
-  .nav-btn.active { background: var(--ink); color: var(--paper); font-weight: 600; }
 
-  .topic { display: none; }
-  .topic.active { display: block; }
-
-  .topic-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1rem;
-    margin-bottom: 1.25rem;
+  /* NAV */
+  .nav-bar {
+    background: var(--cream);
     border-bottom: 1px solid var(--border);
-    padding-bottom: 0.75rem;
+    position: sticky;
+    top: 0;
+    z-index: 100;
   }
-  .topic-num {
-    font-family: 'Playfair Display', serif;
-    font-size: 3rem;
-    font-weight: 900;
-    color: var(--border);
-    line-height: 1;
-    flex-shrink: 0;
+  .nav-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    display: flex;
+    overflow-x: auto;
+    padding: 0 1rem;
+    gap: 0;
+    scrollbar-width: none;
   }
-  .topic-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.6rem;
+  .nav-inner::-webkit-scrollbar { display: none; }
+  .nav-btn {
+    font-family: var(--mono);
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 1rem 1.25rem;
+    border: none;
+    background: none;
+    cursor: pointer;
+    color: rgba(26,18,8,0.5);
+    border-bottom: 2px solid transparent;
+    white-space: nowrap;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .nav-btn:hover { color: var(--ink); }
+  .nav-btn.active { color: var(--ink); border-bottom-color: var(--gold); font-weight: 500; }
+
+  /* MAIN LAYOUT */
+  .main { max-width: 960px; margin: 0 auto; padding: 2rem 1.5rem 4rem; }
+
+  .section-panel { display: none; }
+  .section-panel.active { display: block; animation: fadeIn 0.3s ease; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+  /* SECTION HEADER */
+  .section-header {
+    border-left: 4px solid var(--gold);
+    padding-left: 1.25rem;
+    margin-bottom: 2rem;
+  }
+  .section-tag {
+    font-family: var(--mono);
+    font-size: 11px;
+    color: var(--gold);
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+  .section-header h2 {
+    font-family: var(--display);
+    font-size: 2rem;
     font-weight: 700;
     line-height: 1.2;
-    color: var(--ink);
   }
-  .topic-sub {
-    font-size: 13px;
-    color: var(--muted);
-    letter-spacing: 0.05em;
-    margin-top: 0.2rem;
-  }
-
-  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
-  @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
-
-  .card {
-    background: var(--paper2);
-    border: 1px solid var(--border);
-    border-radius: 2px;
-    padding: 1rem 1.1rem;
-  }
-  .card-title {
-    font-family: 'Playfair Display', serif;
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--accent);
-    margin-bottom: 0.6rem;
-    border-bottom: 1px solid var(--border);
-    padding-bottom: 0.4rem;
-  }
-  .card ul { padding-left: 1.1rem; }
-  .card li { font-size: 14px; margin-bottom: 0.3rem; line-height: 1.55; }
-  .card li strong { color: var(--ink); font-weight: 600; }
-
-  .q-box {
-    border-left: 4px solid var(--accent);
-    background: #f9f0f0;
-    padding: 0.9rem 1.1rem;
-    margin-bottom: 1rem;
-    border-radius: 0 2px 2px 0;
-  }
-  .q-box .q-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--accent);
-    font-weight: 600;
-    margin-bottom: 0.3rem;
-  }
-  .q-box .q-text {
-    font-family: 'Playfair Display', serif;
+  .section-header p {
+    margin-top: 0.5rem;
+    color: rgba(26,18,8,0.6);
     font-style: italic;
-    font-size: 1rem;
-    color: var(--ink);
-    margin-bottom: 0.5rem;
-  }
-  .q-box .marks {
-    display: inline-block;
-    background: var(--accent);
-    color: white;
-    font-size: 11px;
-    padding: 1px 7px;
-    border-radius: 2px;
-    font-weight: 600;
-    font-family: 'Source Serif 4', serif;
+    font-size: 0.95rem;
   }
 
-  .answer-box {
+  /* TOPIC CARD */
+  .topic-card {
     border: 1px solid var(--border);
-    background: white;
-    padding: 1rem 1.1rem;
-    margin-bottom: 1.5rem;
     border-radius: 2px;
+    margin-bottom: 2rem;
+    overflow: hidden;
   }
-  .answer-box .a-label {
-    font-size: 11px;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--green);
-    font-weight: 600;
-    margin-bottom: 0.5rem;
+  .topic-head {
+    background: var(--ink);
+    color: var(--paper);
+    padding: 1rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    cursor: pointer;
+    user-select: none;
   }
-  .answer-box p { font-size: 14px; margin-bottom: 0.5rem; color: var(--ink); }
-  .answer-box p:last-child { margin-bottom: 0; }
+  .topic-heat {
+    font-family: var(--mono);
+    font-size: 10px;
+    background: var(--gold);
+    color: var(--ink);
+    padding: 2px 8px;
+    border-radius: 2px;
+    white-space: nowrap;
+    font-weight: 500;
+  }
+  .topic-heat.key { background: var(--teal); color: #fff; }
+  .topic-title {
+    font-family: var(--display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    flex: 1;
+  }
+  .toggle-icon {
+    font-family: var(--mono);
+    font-size: 18px;
+    color: var(--gold-light);
+    transition: transform 0.25s;
+    line-height: 1;
+  }
+  .topic-card.open .toggle-icon { transform: rotate(45deg); }
 
-  .tip-box {
-    border: 1px dashed var(--gold);
-    background: #fdf8ee;
-    padding: 0.8rem 1rem;
-    margin-bottom: 1.5rem;
-    border-radius: 2px;
+  .topic-body {
+    display: none;
+    padding: 1.5rem;
+    background: var(--paper);
   }
-  .tip-box .t-label {
-    font-size: 11px;
+  .topic-card.open .topic-body { display: block; }
+
+  /* CONTENT BLOCKS */
+  .block { margin-bottom: 1.75rem; }
+  .block:last-child { margin-bottom: 0; }
+
+  .block-label {
+    font-family: var(--mono);
+    font-size: 10px;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--gold);
-    font-weight: 600;
-    margin-bottom: 0.35rem;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--gold-light);
   }
-  .tip-box p { font-size: 13.5px; color: var(--muted); }
 
-  h3 {
-    font-family: 'Playfair Display', serif;
-    font-size: 1.1rem;
-    font-weight: 700;
-    margin: 1.4rem 0 0.6rem;
+  .prose { font-size: 0.97rem; line-height: 1.8; color: rgba(26,18,8,0.88); }
+  .prose p { margin-bottom: 0.75rem; }
+  .prose p:last-child { margin-bottom: 0; }
+  .prose strong { font-weight: 600; color: var(--ink); }
+
+  ul.points {
+    list-style: none;
+    padding: 0;
+  }
+  ul.points li {
+    font-size: 0.95rem;
+    line-height: 1.7;
+    padding: 0.4rem 0 0.4rem 1.4rem;
+    position: relative;
+    color: rgba(26,18,8,0.88);
+    border-bottom: 1px solid rgba(26,18,8,0.05);
+  }
+  ul.points li:last-child { border-bottom: none; }
+  ul.points li::before {
+    content: '—';
+    position: absolute;
+    left: 0;
+    color: var(--gold);
+    font-weight: 600;
+  }
+
+  /* Q-FORMAT BOX */
+  .q-box {
+    background: var(--blue-light);
+    border: 1px solid rgba(26,58,107,0.2);
+    border-radius: 2px;
+    padding: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+  .q-box.red { background: var(--red-light); border-color: rgba(139,26,26,0.2); }
+  .q-box.teal { background: var(--teal-light); border-color: rgba(26,95,95,0.2); }
+  .q-meta {
+    font-family: var(--mono);
+    font-size: 10px;
+    color: var(--blue);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+    display: flex;
+    gap: 0.75rem;
+    align-items: center;
+  }
+  .q-meta.red { color: var(--red); }
+  .q-meta.teal { color: var(--teal); }
+  .marks-badge {
+    background: var(--blue);
+    color: #fff;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-size: 10px;
+  }
+  .marks-badge.red { background: var(--red); }
+  .marks-badge.teal { background: var(--teal); }
+  .q-text {
+    font-size: 0.93rem;
+    line-height: 1.65;
     color: var(--ink);
+    font-style: italic;
   }
-  h3::before { content: '— '; color: var(--border); }
 
-  .pill {
-    display: inline-block;
+  /* ANSWER STRATEGY */
+  .strategy {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+    border-radius: 2px;
+  }
+  .strategy-title {
+    font-family: var(--mono);
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+  .step {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.6rem;
+    align-items: flex-start;
+  }
+  .step-num {
+    font-family: var(--mono);
     font-size: 11px;
-    padding: 2px 8px;
-    border-radius: 20px;
-    font-weight: 600;
-    margin-right: 4px;
+    background: var(--teal);
+    color: #fff;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    margin-top: 2px;
   }
-  .pill-red { background: #f9e0e0; color: var(--accent); }
-  .pill-green { background: #e0f0e8; color: var(--green); }
-  .pill-gold { background: #fdf0d0; color: var(--gold); }
+  .step-text { font-size: 0.92rem; line-height: 1.65; color: rgba(26,18,8,0.85); }
 
-  .section-divider {
+  /* EXAM TIP */
+  .tip {
+    background: #fffbea;
+    border-left: 3px solid var(--gold);
+    padding: 0.9rem 1.1rem;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    line-height: 1.65;
+    color: rgba(26,18,8,0.8);
+  }
+  .tip strong { color: var(--gold); }
+
+  /* DIVIDER */
+  .rule {
     border: none;
     border-top: 1px solid var(--border);
-    margin: 2rem 0;
+    margin: 1.5rem 0;
   }
 
-  .formula-box {
-    background: var(--blue-dark);
-    color: #e8dfc8;
-    padding: 1rem 1.25rem;
-    border-radius: 2px;
-    margin-bottom: 1.25rem;
-    font-size: 13.5px;
+  /* HOME PANEL */
+  .home-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-top: 1.5rem;
   }
-  .formula-box .f-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #a09070; margin-bottom: 0.5rem; }
-  .formula-box p { margin-bottom: 0.3rem; line-height: 1.6; }
-  .formula-box strong { color: #f0c060; }
+  .home-card {
+    background: var(--cream);
+    border: 1px solid var(--border);
+    padding: 1.25rem;
+    cursor: pointer;
+    transition: background 0.2s, border-color 0.2s;
+    border-radius: 2px;
+  }
+  .home-card:hover { background: var(--gold-light); border-color: var(--gold); }
+  .home-card-num {
+    font-family: var(--mono);
+    font-size: 28px;
+    font-weight: 500;
+    color: var(--gold);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+  }
+  .home-card-title {
+    font-family: var(--display);
+    font-size: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+  }
+  .home-card-sub { font-size: 0.82rem; color: rgba(26,18,8,0.55); line-height: 1.5; }
+  .home-intro {
+    font-size: 1rem;
+    line-height: 1.8;
+    color: rgba(26,18,8,0.75);
+    max-width: 680px;
+  }
+  .home-intro strong { color: var(--ink); }
 </style>
 </head>
 <body>
 
 <div class="masthead">
-  <div class="masthead-sub">O-Level Pakistan Studies 2059/1 · CAIE May/June 2026</div>
-  <h1>Section 1 Study Guide</h1>
-  <hr class="masthead-rule">
-  <div style="font-size:13px;color:var(--muted);font-style:italic;">Mughal Decline &nbsp;·&nbsp; War of Independence 1857 &nbsp;·&nbsp; Islamic Reformers</div>
+  <div class="masthead-inner">
+    <div class="masthead-label">CAIE 2059 · May/June 2026 · Complete Revision Guide</div>
+    <h1>O-Level Pakistan Studies<br><em>Master Notes</em></h1>
+    <p class="masthead-sub">All predicted topics · how questions appear · how to answer them</p>
+  </div>
 </div>
 
-<nav class="nav-strip">
-  <button class="nav-btn active" onclick="show('mughal')">1. Mughal Decline</button>
-  <button class="nav-btn" onclick="show('1857')">2. War of Independence</button>
-  <button class="nav-btn" onclick="show('swu')">3. Shah Waliullah</button>
-  <button class="nav-btn" onclick="show('syed')">4. Sir Syed Ahmed Khan</button>
-  <button class="nav-btn" onclick="show('hsu')">5. Haji Shariat Ullah</button>
-  <button class="nav-btn" onclick="show('howto')">★ How to Answer</button>
+<nav class="nav-bar">
+  <div class="nav-inner">
+    <button class="nav-btn active" onclick="show('home')">Home</button>
+    <button class="nav-btn" onclick="show('sec1')">P1 — Section I: Pre-Independence</button>
+    <button class="nav-btn" onclick="show('sec2')">P1 — Section II: Pak Movement</button>
+    <button class="nav-btn" onclick="show('sec3')">P1 — Section III: Post-Independence</button>
+    <button class="nav-btn" onclick="show('fp')">P1 — Foreign Policy</button>
+    <button class="nav-btn" onclick="show('p2')">P2 — Geography</button>
+  </div>
 </nav>
 
-<!-- ══════════ TOPIC 1: MUGHAL DECLINE ══════════ -->
-<div class="topic active" id="mughal">
-  <div class="topic-header">
-    <div class="topic-num">01</div>
-    <div>
-      <div class="topic-title">The Decline of the Mughal Empire</div>
-      <div class="topic-sub">Post-Aurangzeb · British arrival · Rise of regional powers</div>
+<main class="main">
+
+<!-- HOME -->
+<div id="home" class="section-panel active">
+  <div class="section-header">
+    <div class="section-tag">Start here</div>
+    <h2>How to use this guide</h2>
+    <p>One topic at a time. Click any section in the nav above.</p>
+  </div>
+  <p class="home-intro">
+    This guide covers <strong>every high-priority topic</strong> predicted by 8 teachers for the May/June 2026 exam.
+    For each topic you'll find: the full content you need to know, <strong>exactly how questions appear</strong> at each mark level (3, 4, 5, 7, 10, 14), and <strong>step-by-step answer strategies</strong> Cambridge rewards.
+  </p>
+  <div class="home-grid">
+    <div class="home-card" onclick="show('sec1')">
+      <div class="home-card-num">I</div>
+      <div class="home-card-title">Pre-Independence</div>
+      <div class="home-card-sub">Mughal decline · 1857 War · Shah Waliullah · Sir Syed · EIC</div>
     </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">Internal causes of decline</div>
-      <ul>
-        <li><strong>Aurangzeb's policies</strong> — re-imposed jizya tax on Hindus, destroyed temples; created massive Hindu & Sikh resentment</li>
-        <li><strong>Weak successors</strong> — 12 emperors in 30 years after 1707; court intrigues, incompetence</li>
-        <li><strong>Wars of succession</strong> — princes fought each other, draining the treasury</li>
-        <li><strong>Empty treasury</strong> — decades of war (Deccan campaign cost millions); state could not pay army</li>
-        <li><strong>Corruption</strong> — nobles became self-serving; land revenues mismanaged</li>
-        <li><strong>Loss of central control</strong> — governors declared independence (Hyderabad, Bengal, Awadh)</li>
-      </ul>
+    <div class="home-card" onclick="show('sec2')">
+      <div class="home-card-num">II</div>
+      <div class="home-card-title">Pakistan Movement</div>
+      <div class="home-card-sub">1905–1947 · Khilafat · Muslim League · 1940 Resolution</div>
     </div>
-    <div class="card">
-      <div class="card-title">External causes of decline</div>
-      <ul>
-        <li><strong>Nadir Shah's invasion (1739)</strong> — sacked Delhi, took the Peacock Throne & Koh-i-Noor; killed 30,000 people; devastating psychologically</li>
-        <li><strong>Ahmad Shah Durrani</strong> — invaded 8 times; Third Battle of Panipat 1761 broke Maratha power</li>
-        <li><strong>Maratha expansion</strong> — filled the power vacuum; threatened Mughal heartland</li>
-        <li><strong>Rise of Sikhs</strong> — established autonomous rule in Punjab</li>
-        <li><strong>British EIC</strong> — exploited political chaos; Battle of Plassey 1757 gave them Bengal</li>
-      </ul>
+    <div class="home-card" onclick="show('sec3')">
+      <div class="home-card-num">III</div>
+      <div class="home-card-title">Post-Independence</div>
+      <div class="home-card-sub">Early problems · Zia · Bhutto · Bangladesh · Constitutions</div>
     </div>
-  </div>
-
-  <h3>How questions appear on this topic</h3>
-
-  <div class="q-box">
-    <div class="q-label">Typical 3-mark (a) question</div>
-    <div class="q-text">"According to Source A, what happened after the death of Aurangzeb?"</div>
-    <span class="marks">[3 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 3 marks</div>
-    <p>Pick <strong>3 separate points directly from the source</strong>. Do not add outside knowledge. Write one sentence per point.</p>
-    <p><em>Example: "According to Source A, after Aurangzeb's death, the Hindus began to exercise greater control over parts of the subcontinent. Muslim power began to disintegrate. Many Muslims felt strongly about reviving Islam."</em></p>
-  </div>
-
-  <div class="q-box">
-    <div class="q-label">Typical 7-mark (c) question</div>
-    <div class="q-text">"Why did the Mughal Empire decline after 1707?"</div>
-    <span class="marks">[7 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 7 marks</div>
-    <p>Write <strong>3–4 developed points</strong>. Each point = identify the reason + explain how it caused decline. No need for conclusion at 7 marks.</p>
-    <p><em>Example point: "Aurangzeb's religious policies created serious resentment. He re-imposed the jizya tax on Hindus and destroyed Hindu temples, which turned large sections of the population against Mughal rule. This made it much harder for his weak successors to maintain loyalty across the empire."</em></p>
-  </div>
-
-  <div class="tip-box">
-    <div class="t-label">Examiner tip</div>
-    <p>For decline questions, always link your point back to HOW it weakened the empire — don't just list facts. The examiner wants cause → effect reasoning.</p>
-  </div>
-
-  <div class="q-box">
-    <div class="q-label">Typical 14-mark (c) essay</div>
-    <div class="q-text">"Were the weak successors the main reason for the decline of the Mughal Empire? Explain your answer."</div>
-    <span class="marks">[14 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 14 marks</div>
-    <p><strong>Agree side:</strong> Yes — 12 emperors in 30 years, wars of succession drained treasury, court intrigues paralysed government, no strong leader to hold empire together.</p>
-    <p><strong>Disagree side:</strong> No — Aurangzeb himself planted the seeds (religious policies, empty treasury from Deccan wars). External invasions (Nadir Shah 1739, Marathas) were equally damaging. British EIC exploited the chaos.</p>
-    <p><strong>Conclusion:</strong> Weak successors accelerated the decline, but Aurangzeb's policies and external invasions were the root causes — the empire was already fatally weakened before the successors took over.</p>
-  </div>
-</div>
-
-<!-- ══════════ TOPIC 2: WAR OF INDEPENDENCE 1857 ══════════ -->
-<div class="topic" id="1857">
-  <div class="topic-header">
-    <div class="topic-num">02</div>
-    <div>
-      <div class="topic-title">War of Independence 1857</div>
-      <div class="topic-sub">Causes · Events · Reasons for failure · Consequences</div>
+    <div class="home-card" onclick="show('fp')">
+      <div class="home-card-num">FP</div>
+      <div class="home-card-title">Foreign Policy</div>
+      <div class="home-card-sub">India · USA · China · USSR · UN · Nuclear</div>
     </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">Causes — remember PERM</div>
-      <ul>
-        <li><strong>P — Political:</strong> Doctrine of Lapse (Dalhousie); annexation of Awadh 1856 angered nobles & soldiers; no Indian in senior positions</li>
-        <li><strong>E — Economic:</strong> Indian handicrafts destroyed by cheap British goods; heavy land taxes ruined farmers; drain of wealth to Britain</li>
-        <li><strong>R — Religious/Social:</strong> Fear of forced conversion to Christianity; missionaries active; greased cartridges (cow/pig fat) offended both Hindus & Muslims</li>
-        <li><strong>M — Military:</strong> Indian sepoys paid less than British soldiers; "General Service Enlistment Act" forced overseas service (religiously unacceptable); Enfield rifle cartridge controversy was the spark</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">Reasons for failure</div>
-      <ul>
-        <li><strong>No unified leadership</strong> — Bahadur Shah Zafar was old & weak; no single commander</li>
-        <li><strong>No common goal</strong> — some wanted Mughal rule restored, others wanted regional independence</li>
-        <li><strong>Poor weapons</strong> — swords vs British rifles and artillery</li>
-        <li><strong>Not nationwide</strong> — Bengal, Bombay, Madras armies mostly stayed loyal to British</li>
-        <li><strong>Sikhs & Gurkhas fought for British</strong> — recent enemies of Mughals</li>
-        <li><strong>British reinforcements</strong> — troops arrived from Crimea; modern communications (telegraph) coordinated response</li>
-        <li><strong>No foreign help</strong> — no outside power intervened on rebels' side</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="card" style="margin-bottom:1.25rem;">
-    <div class="card-title">Consequences of the war</div>
-    <ul style="columns:2;gap:1.5rem;">
-      <li>East India Company abolished — Crown took direct control (1858)</li>
-      <li>Bahadur Shah Zafar exiled to Burma — end of Mughal dynasty</li>
-      <li>Indian army reorganised — more British officers, fewer Indian soldiers</li>
-      <li>Muslims blamed — lost land, jobs, political influence</li>
-      <li>Hindu-Muslim relations damaged</li>
-      <li>Sir Syed Ahmed Khan emerged — argued Muslims must cooperate with British to survive</li>
-    </ul>
-  </div>
-
-  <h3>How questions appear on this topic</h3>
-
-  <div class="q-box">
-    <div class="q-label">Typical 5-mark (b) question — source based</div>
-    <div class="q-text">"What does Source B tell us about the War of Independence?"</div>
-    <span class="marks">[5 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 5 marks</div>
-    <p>Describe <strong>what you see in the image/source</strong> + infer <strong>2 further points</strong> from it. Use phrases like "This suggests…" or "This shows that…"</p>
-    <p><em>Example: "Source B shows Indian soldiers fighting British troops. This suggests the war involved both Indian infantry and cavalry. The scale of the fighting suggests it was widespread and not a minor local rebellion. The presence of burning buildings suggests the war caused significant destruction to civilian areas."</em></p>
-  </div>
-
-  <div class="q-box">
-    <div class="q-label">Typical 7-mark question</div>
-    <div class="q-text">"Why did the War of Independence fail in 1857?"</div>
-    <span class="marks">[7 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 7 marks</div>
-    <p>Give <strong>3 developed reasons</strong>. Each needs a specific detail.</p>
-    <p><em>Example point: "One key reason was the lack of unified leadership. Bahadur Shah Zafar, who was proclaimed leader, was an old and frail emperor with no real military experience. Without a strong commander to coordinate attacks, Indian forces were unable to mount an effective sustained campaign against the well-organised British army."</em></p>
-  </div>
-
-  <div class="q-box">
-    <div class="q-label">Typical 10-mark (d) question</div>
-    <div class="q-text">"Economic factors were more important than military factors in causing the War of Independence 1857. Do you agree? Explain."</div>
-    <span class="marks">[10 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 10 marks</div>
-    <p><strong>Agree (economic factors):</strong> Destruction of Indian industries, heavy land taxes, drain of wealth to Britain created widespread poverty and resentment across all classes — both peasants and former rulers lost economically.</p>
-    <p><strong>Disagree (military factors):</strong> The immediate trigger was the greased cartridge issue — a military grievance. Indian sepoys had real, immediate day-to-day complaints: lower pay, overseas service, cultural insults. Without the sepoys' revolt, the economic grievances alone would not have started the war.</p>
-    <p><strong>Conclusion + your justified view:</strong> Both were essential. Economic factors built long-term resentment across society, but military grievances provided the spark and the organised force. Without the army's involvement, there would have been no organised uprising.</p>
-  </div>
-
-  <div class="tip-box">
-    <div class="t-label">Examiner tip — 10 and 14 mark essays</div>
-    <p>You MUST argue BOTH sides and give a justified conclusion. Simply agreeing or disagreeing without considering the other side caps you at level 3 (~6 marks). Your conclusion should explain WHY you chose your side, not just repeat it.</p>
-  </div>
-</div>
-
-<!-- ══════════ TOPIC 3: SHAH WALIULLAH ══════════ -->
-<div class="topic" id="swu">
-  <div class="topic-header">
-    <div class="topic-num">03</div>
-    <div>
-      <div class="topic-title">Shah Waliullah (1703–1762)</div>
-      <div class="topic-sub">Revival of Islam · Translation of Quran · Political reform</div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">Why was revival needed?</div>
-      <ul>
-        <li>Mughal decline left Muslims politically weak</li>
-        <li>Hindu customs had crept into Muslim practice (un-Islamic innovations)</li>
-        <li>Most Muslims could not read the Quran — it was only in Arabic</li>
-        <li>Muslim scholars were divided into conflicting sects</li>
-        <li>Political chaos made Muslims demoralised and directionless</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">His contributions</div>
-      <ul>
-        <li><strong>Translated the Quran into Persian</strong> — first time ordinary educated Muslims could read it; massively controversial but vital</li>
-        <li><strong>His sons translated it into Urdu</strong> — reached the masses</li>
-        <li><strong>Wrote Hujjat-ul-Baligha</strong> — explained Islamic law in rational terms</li>
-        <li><strong>United Muslim sects</strong> — tried to reconcile Sunni divisions (Hanafi, Shafi etc.)</li>
-        <li><strong>Political action</strong> — invited Ahmad Shah Durrani to defeat Marathas at Panipat 1761</li>
-        <li><strong>Inspired later movements</strong> — his ideas influenced Syed Ahmad Barelvi's Jihad Movement</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>How questions appear</h3>
-
-  <div class="q-box">
-    <div class="q-label">Typical 7-mark question</div>
-    <div class="q-text">"Why did Shah Waliullah try to revive Islam in the subcontinent?"</div>
-    <span class="marks">[7 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer</div>
-    <p>Give 3 developed reasons — each must explain both WHY he was motivated AND what he did about it.</p>
-    <p><em>Example: "Shah Waliullah was deeply concerned that ordinary Muslims had no access to the Quran. Since it existed only in Arabic, most Muslims — including educated ones — could not read or understand it. This meant they were disconnected from their own faith. In response, he translated the Quran into Persian so that the educated classes could read it directly, a step that was controversial but proved enormously influential."</em></p>
-  </div>
-
-  <div class="q-box">
-    <div class="q-label">Typical 14-mark essay</div>
-    <div class="q-text">"Did Shah Waliullah contribute more to the spread of Islam than anyone else in the subcontinent before 1850? Explain."</div>
-    <span class="marks">[14 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer</div>
-    <p><strong>Yes — Shah Waliullah:</strong> Translation of Quran was revolutionary; united sects; political vision; inspired future reformers. His influence lasted generations.</p>
-    <p><strong>No — others were also important:</strong> Syed Ahmad Barelvi took his ideas into action (Jihad Movement against Sikhs). Haji Shariat Ullah mobilised Bengali peasants through the Faraizi Movement. Sir Syed Ahmed Khan later modernised Muslim education.</p>
-    <p><strong>Conclusion:</strong> Shah Waliullah's intellectual foundations were the most lasting — without his translation and writings, later reformers would have had no ideological base. He was the most important.</p>
-  </div>
-</div>
-
-<!-- ══════════ TOPIC 4: SIR SYED AHMED KHAN ══════════ -->
-<div class="topic" id="syed">
-  <div class="topic-header">
-    <div class="topic-num">04</div>
-    <div>
-      <div class="topic-title">Sir Syed Ahmed Khan (1817–1898)</div>
-      <div class="topic-sub">Aligarh Movement · Two-Nation Theory · Muslim modernisation</div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">Context — why was he important?</div>
-      <ul>
-        <li>After 1857, Muslims were blamed by British; lost jobs & land</li>
-        <li>Muslims boycotted British schools → fell behind Hindus educationally</li>
-        <li>Muslim share of government jobs collapsed</li>
-        <li>Sir Syed believed Muslims must modernise or become permanently marginalised</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">His contributions</div>
-      <ul>
-        <li><strong>MAO College, Aligarh (1875)</strong> — Oxford-style college; English + Islamic education; produced Muslim professionals</li>
-        <li><strong>Scientific Society (1863)</strong> — translated Western books into Urdu</li>
-        <li><strong>Wrote "Causes of the Indian Revolt"</strong> — defended Muslims, said British policies caused 1857</li>
-        <li><strong>Two-Nation Theory</strong> — first argued Hindus and Muslims are two separate nations; cannot share a country; seed of Pakistan Movement</li>
-        <li><strong>Opposed Indian National Congress (1885)</strong> — said it was Hindu-dominated; Muslims should not join</li>
-        <li><strong>Urged loyalty to British</strong> — pragmatic; cooperation not confrontation</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>How questions appear</h3>
-
-  <div class="q-box">
-    <div class="q-label">Typical 7-mark question</div>
-    <div class="q-text">"Why did Sir Syed Ahmed Khan try to improve relations between Muslims and the British?"</div>
-    <span class="marks">[7 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer</div>
-    <p><em>Key point example: "After 1857, the British blamed Muslims for the uprising and as a result Muslims lost jobs in the civil service and the military, and faced hostility in general. Sir Syed realised that if Muslims continued to be seen as enemies of the Crown, they would fall further behind educationally and politically. He therefore argued that cooperating with the British was the only practical way for Muslims to protect their interests."</em></p>
-  </div>
-
-  <div class="tip-box">
-    <div class="t-label">Link to later history</div>
-    <p>Examiners love it when you connect Sir Syed's Two-Nation Theory directly to later events — the formation of the Muslim League (1906), the Lahore Resolution (1940), and ultimately the creation of Pakistan (1947). This shows big-picture thinking and earns top-level marks.</p>
-  </div>
-</div>
-
-<!-- ══════════ TOPIC 5: HAJI SHARIAT ULLAH ══════════ -->
-<div class="topic" id="hsu">
-  <div class="topic-header">
-    <div class="topic-num">05</div>
-    <div>
-      <div class="topic-title">Haji Shariat Ullah (1781–1840)</div>
-      <div class="topic-sub">Faraizi Movement · Bengal · Anti-British resistance</div>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">Background & context</div>
-      <ul>
-        <li>Bengal Muslims were poor peasants (ryots) under Hindu zamindars and British indigo planters</li>
-        <li>Spent 20 years in Mecca; returned deeply influenced by Wahhabi reform</li>
-        <li>Found Bengal Muslims practising Hindu customs, ignoring Islamic duties</li>
-        <li>British rule meant Friday prayers & Eid were politically restricted in his view</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">The Faraizi Movement</div>
-      <ul>
-        <li><strong>"Faraizi"</strong> = those who perform the fara'id (obligatory Islamic duties)</li>
-        <li>Declared Bengal a "dar-ul-harb" (land of war) — not a proper Muslim land under British rule</li>
-        <li>Therefore suspended Friday and Eid congregational prayers (controversial ruling)</li>
-        <li>Organised Bengali Muslim peasants — social & religious reform</li>
-        <li>Son <strong>Dudu Miyan</strong> made it more political — resisted zamindars & British</li>
-        <li>British arrested and imprisoned Haji Shariat Ullah multiple times</li>
-      </ul>
-    </div>
-  </div>
-
-  <h3>How questions appear</h3>
-
-  <div class="q-box">
-    <div class="q-label">Typical 4-mark (a) question</div>
-    <div class="q-text">"What was the Faraizi Movement?"</div>
-    <span class="marks">[4 marks]</span>
-  </div>
-  <div class="answer-box">
-    <div class="a-label">How to answer — 4 marks</div>
-    <p>Describe: what it was, who founded it, what it aimed to do, one specific action. Keep it factual and precise.</p>
-    <p><em>Example: "The Faraizi Movement was founded by Haji Shariat Ullah in Bengal in the early 19th century. Its name came from 'fara'id' meaning obligatory Islamic duties. It aimed to purify Muslim practice by removing Hindu customs. Haji Shariat Ullah also organised Muslim peasants against the oppression of Hindu zamindars and British indigo planters."</em></p>
-  </div>
-
-  <div class="tip-box">
-    <div class="t-label">Comparison question warning</div>
-    <p>Sometimes the 14-mark question asks you to compare all three reformers (Shah Waliullah, Sir Syed, Haji Shariat Ullah) and judge who contributed most. Prepare a clear argument for each and pick one to defend with reasons. Shah Waliullah is usually the safest choice as "most important" since his ideas underpinned all later movements.</p>
-  </div>
-</div>
-
-<!-- ══════════ HOW TO ANSWER ══════════ -->
-<div class="topic" id="howto">
-  <div class="topic-header">
-    <div class="topic-num">★</div>
-    <div>
-      <div class="topic-title">How to Answer Every Question Type</div>
-      <div class="topic-sub">Mark scheme logic · Structures · Common mistakes</div>
-    </div>
-  </div>
-
-  <div class="formula-box">
-    <div class="f-title">The Cambridge mark levels — Paper 1</div>
-    <p><strong>3 marks (a):</strong> 3 points directly from the source. One sentence each. No outside knowledge needed.</p>
-    <p><strong>4 marks (a):</strong> Describe an event/term. What + who + when + significance.</p>
-    <p><strong>5 marks (b):</strong> Source B (usually image). Describe + 2–3 inferences. Use "this suggests…"</p>
-    <p><strong>7 marks (b/c):</strong> 3 developed points. Each = reason + explanation + specific detail.</p>
-    <p><strong>10 marks (d):</strong> Both sides argued + conclusion with your justified view.</p>
-    <p><strong>14 marks (c):</strong> Both sides argued in depth + strong justified conclusion. Minimum 3 points per side.</p>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title">7-mark formula</div>
-      <ul>
-        <li><strong>Point:</strong> State the reason clearly</li>
-        <li><strong>Explain:</strong> Why did this cause / result in the event?</li>
-        <li><strong>Evidence:</strong> Give a specific fact, name, date</li>
-        <li>Repeat x3. No intro or conclusion needed.</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title">14-mark formula (PEE×3 + PEE×3 + Conclusion)</div>
-      <ul>
-        <li><strong>Side A</strong> (agree) — 3 PEE points</li>
-        <li><strong>Side B</strong> (disagree) — 3 PEE points</li>
-        <li><strong>Conclusion</strong> — pick a side, justify WHY that side outweighs the other</li>
-        <li>Word "however" or "on the other hand" to signal the turn</li>
-      </ul>
-    </div>
-  </div>
-
-  <div class="two-col">
-    <div class="card">
-      <div class="card-title" style="color:var(--accent);">Common mistakes to avoid</div>
-      <ul>
-        <li>Writing only one side for 14-mark questions → max 8/14</li>
-        <li>Listing facts without explaining how they relate to the question</li>
-        <li>Adding outside knowledge in the 3-mark source question</li>
-        <li>Vague conclusions like "both were important" — pick a side!</li>
-        <li>Forgetting specific names/dates in 7-mark answers</li>
-      </ul>
-    </div>
-    <div class="card">
-      <div class="card-title" style="color:var(--green);">Phrases that score marks</div>
-      <ul>
-        <li>"This was significant because…"</li>
-        <li>"As a result of this, Muslims…"</li>
-        <li>"This shows that…" (source questions)</li>
-        <li>"However, a more important factor was…"</li>
-        <li>"Overall, [X] was the most important because… whereas [Y] only…"</li>
-      </ul>
+    <div class="home-card" onclick="show('p2')">
+      <div class="home-card-num">P2</div>
+      <div class="home-card-title">Geography</div>
+      <div class="home-card-sub">Topography · Climate · Agriculture · Power · Population</div>
     </div>
   </div>
 </div>
+
+<!-- SECTION I: PRE-INDEPENDENCE -->
+<div id="sec1" class="section-panel">
+  <div class="section-header">
+    <div class="section-tag">Paper 1 — Section I</div>
+    <h2>Pre-Independence Era</h2>
+    <p>Mughal decline, British arrival, 1857 War, Islamic reformers, Sir Syed Ahmed Khan</p>
+  </div>
+
+  <!-- TOPIC 1: MUGHAL DECLINE -->
+  <div class="topic-card" id="t-mughal">
+    <div class="topic-head" onclick="toggle('t-mughal')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Decline of the Mughal Empire</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">What you need to know</div>
+        <div class="prose">
+          <p>The Mughal Empire reached its peak under Aurangzeb (died 1707), but his policies sowed the seeds of decline. After his death, a rapid succession of weak emperors allowed regional powers to fill the vacuum.</p>
+          <p><strong>Key causes of decline:</strong></p>
+        </div>
+        <ul class="points">
+          <li><strong>Weak successors</strong> — after Aurangzeb, 12 emperors ruled in just 30 years. None had political skill or military strength.</li>
+          <li><strong>Aurangzeb's religious policies</strong> — reimposing the jizya tax on Hindus and destroying temples alienated the Hindu population and fuelled the Maratha revolt.</li>
+          <li><strong>Maratha rise</strong> — Shivaji and later Maratha confederacy carved away large portions of the Deccan and central India.</li>
+          <li><strong>Foreign invasions</strong> — Nadir Shah of Persia sacked Delhi in 1739, taking the Peacock Throne and massacring 30,000 people. Ahmad Shah Durrani (Afghanistan) invaded nine times between 1748–1767, each time weakening central authority further.</li>
+          <li><strong>Economic collapse</strong> — constant wars drained the treasury. Provincial governors (nawabs) stopped sending revenue to Delhi and became independent rulers.</li>
+          <li><strong>Military decay</strong> — the army relied on outdated weapons and tactics. European-trained forces (EIC sepoys) were far superior.</li>
+          <li><strong>Arrival of the EIC</strong> — the British East India Company exploited political fragmentation, playing nawabs against each other through a policy of divide and rule.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box">
+          <div class="q-meta"><span class="marks-badge">3 marks</span> Source-based (Section A)</div>
+          <div class="q-text">"According to Source A, what happened after the death of Aurangzeb?"</div>
+        </div>
+        <div class="q-box red">
+          <div class="q-meta red"><span class="marks-badge red">7 marks</span> Section B</div>
+          <div class="q-text">"Why did the Mughal Empire decline after 1707?"</div>
+        </div>
+        <div class="q-box teal">
+          <div class="q-meta teal"><span class="marks-badge teal">14 marks</span> Section B evaluation</div>
+          <div class="q-text">"Was Aurangzeb's reign the main reason for the decline of the Mughal Empire? Explain your answer."</div>
+        </div>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How to answer — strategy</div>
+        <div class="strategy">
+          <div class="strategy-title">3-mark source question</div>
+          <div class="step"><div class="step-num">1</div><div class="step-text">Make 3 separate points directly from the source text. Do not add outside knowledge.</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Use the phrasing "According to the source..." or "The source states that..."</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Each point = 1 mark. Keep it brief — one sentence each.</div></div>
+        </div>
+        <div class="strategy" style="margin-top:0.75rem;">
+          <div class="strategy-title">7-mark "why" question</div>
+          <div class="step"><div class="step-num">1</div><div class="step-text">Write 3–4 developed paragraphs, each on a different cause.</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Each paragraph: name the cause → explain it → show its consequence. E.g. "Weak successors meant that..." "This led to..."</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">No introduction needed. No conclusion needed. Just well-developed points.</div></div>
+        </div>
+        <div class="strategy" style="margin-top:0.75rem;">
+          <div class="strategy-title">14-mark evaluation question</div>
+          <div class="step"><div class="step-num">1</div><div class="step-text">Brief intro — set the scene (1–2 sentences only).</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">Argue FOR the statement with 2–3 developed points (e.g. yes, Aurangzeb's policies were important because...).</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Argue AGAINST with 2–3 other causes (weak successors, foreign invasions, EIC).</div></div>
+          <div class="step"><div class="step-num">4</div><div class="step-text">Conclusion: make a judgment — "Overall, the most important reason was... because..." and justify it clearly.</div></div>
+        </div>
+        <div class="tip"><strong>Exam tip:</strong> For 14-mark questions, the conclusion is where top marks are won. Cambridge rewards a clear, reasoned judgment — not just "there were many reasons."</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 2: 1857 WAR -->
+  <div class="topic-card" id="t-1857">
+    <div class="topic-head" onclick="toggle('t-1857')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">War of Independence 1857</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Causes</div>
+        <ul class="points">
+          <li><strong>Military grievances (Immediate cause)</strong> — the introduction of the Enfield rifle cartridges greased with cow and pig fat deeply offended both Hindu and Muslim sepoys. Soldiers had to bite the cartridge to load — this was seen as a direct attack on their religion.</li>
+          <li><strong>Political grievances</strong> — the Doctrine of Lapse (Dalhousie) meant Indian kingdoms without a male heir were annexed by the British. Nawabs like Wajid Ali Shah of Awadh were deposed, humiliating the Muslim aristocracy.</li>
+          <li><strong>Economic grievances</strong> — British imported manufactured goods destroyed local Indian industries. Heavy land taxation left peasants in poverty. Indians were excluded from senior government and military positions.</li>
+          <li><strong>Social/Religious grievances</strong> — Christian missionaries were active and feared. The British abolished practices like Suttee — seen as interference in religion and culture. Introduction of Western education threatened traditional Muslim scholarship.</li>
+          <li><strong>Growing resentment</strong> — the "General Service Enlistment Act" required sepoys to serve overseas, which many considered religiously polluting.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Key events</div>
+        <ul class="points">
+          <li><strong>May 1857 — Meerut</strong>: 85 sepoys refused to use cartridges, were court-martialled. Fellow sepoys rebelled, killed British officers, marched to Delhi.</li>
+          <li><strong>Delhi</strong>: Rebels declared the last Mughal emperor Bahadur Shah Zafar as their leader.</li>
+          <li><strong>Cawnpore (Kanpur)</strong>: Major siege and massacre — became a rallying point for British retaliation.</li>
+          <li><strong>Lucknow</strong>: Prolonged British Residency siege; held out for months.</li>
+          <li><strong>British retook Delhi by September 1857</strong> — the rebellion was largely suppressed by mid-1858.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Reasons for failure</div>
+        <ul class="points">
+          <li><strong>Lack of unified leadership</strong> — Bahadur Shah Zafar was old and ineffective. There was no coordinated national command.</li>
+          <li><strong>Limited geography</strong> — revolt was concentrated in UP, Delhi, Bihar. Punjab, Bengal, Madras did not join. Sikh soldiers actually helped the British.</li>
+          <li><strong>Military superiority of British</strong> — better weapons, organisation, and the telegraph allowed rapid communication and troop movement.</li>
+          <li><strong>Indian princes stayed loyal</strong> — many Indian rulers supported Britain and provided troops and resources.</li>
+          <li><strong>No common goal</strong> — Hindus and Muslims had different aims; there was no shared vision of what to replace British rule with.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Results / Consequences</div>
+        <ul class="points">
+          <li>The East India Company was dissolved — direct British Crown rule began (British Raj, 1858).</li>
+          <li>Bahadur Shah Zafar was exiled to Burma — end of the Mughal dynasty.</li>
+          <li>Muslims were particularly blamed and faced severe reprisals, losing land, jobs, and influence.</li>
+          <li>The British reorganised the Indian Army — never again would Indians outnumber British troops so greatly.</li>
+          <li>The event inspired later Muslim reformers (especially Sir Syed Ahmed Khan) to rethink how Muslims should relate to British power.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">5 marks</span> Source-based</div><div class="q-text">"What does Source B tell us about the War of Independence?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why did the War of Independence fail?" / "Why did the War of Independence happen in 1857?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span> Section A evaluation</div><div class="q-text">"Economic factors were more important than military factors leading to 1857. Do you agree?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"How successful was the War of Independence?" / "Was the cartridge issue the main cause of the 1857 War?"</div></div>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Answer strategy — 5-mark source question</div>
+        <div class="strategy">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Make 5 distinct points from what the source shows (image/text). For images, describe what you see AND what it suggests/implies.</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">E.g. for a battle scene image: "The source shows fighting between Indian soldiers and British forces, suggesting the scale of the conflict..."</div></div>
+          <div class="step"><div class="step-num">3</div><div class="step-text">Always link the visual detail to its historical significance.</div></div>
+        </div>
+        <div class="tip"><strong>Exam tip:</strong> For the 10-mark Section A question (d), you must present BOTH sides of the argument before giving your conclusion. Argue FOR the statement, then AGAINST, then judge. One-sided answers are capped at around 6 marks.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 3: SHAH WALIULLAH -->
+  <div class="topic-card" id="t-swu">
+    <div class="topic-head" onclick="toggle('t-swu')">
+      <span class="topic-heat key">★ Key</span>
+      <span class="topic-title">Shah Waliullah & Islamic Reformers</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">The three reformers — who they are</div>
+        <div class="prose"><p>Cambridge expects you to know <strong>Shah Waliullah</strong> in most depth, but also be aware of <strong>Syed Ahmad Barelvi</strong> (Jihad Movement) and <strong>Haji Shariat Ullah</strong> (Faraezi Movement).</p></div>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Shah Waliullah (1703–1762)</div>
+        <ul class="points">
+          <li><strong>Background</strong>: Born in Delhi, studied in Mecca and Medina. Returned determined to revive Islam in the subcontinent amid Mughal decline.</li>
+          <li><strong>Translation of the Quran</strong>: Translated the Quran into Persian so more Muslims could understand it directly — revolutionary at the time. His sons later translated it into Urdu.</li>
+          <li><strong>Unifying sects</strong>: Tried to reconcile divisions between Sunni schools of thought (Hanafi, Shafi, etc.) to create Muslim unity.</li>
+          <li><strong>Political vision</strong>: Invited Ahmad Shah Durrani to invade India and crush the Marathas — leading to the Third Battle of Panipat (1761), which temporarily halted Maratha expansion.</li>
+          <li><strong>Education reform</strong>: Emphasised the study of Hadith and rational Islamic sciences. His school produced a generation of reformist scholars.</li>
+          <li><strong>Legacy</strong>: His ideas directly inspired both the Jihad Movement and later the Deoband school of thought, shaping Muslim identity in South Asia for centuries.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Syed Ahmad Barelvi — Jihad Movement</div>
+        <ul class="points">
+          <li>Student of Shah Waliullah's son. Preached return to pure Islamic practice.</li>
+          <li>Organised armed jihad against the Sikh Kingdom in Punjab (not against the British initially).</li>
+          <li>Killed at the Battle of Balakot (1831) — the movement lost its leader but influenced later Muslim activism.</li>
+          <li><strong>Why it failed</strong>: Poor military planning, lack of local Pashtun support who switched sides, no unified command after Barelvi's death.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Haji Shariat Ullah — Faraezi Movement (Bengal)</div>
+        <ul class="points">
+          <li>Focused on Bengal's Muslim peasants, who were exploited by Hindu landlords and British indigo planters.</li>
+          <li>Declared that Bengal under British rule was Dar-ul-Harb (land of war), so Friday prayers and Eid prayers (which require a free Islamic state) should not be held.</li>
+          <li>Emphasised the Faraiz (obligatory duties of Islam) as a way to purify and unite Bengali Muslims.</li>
+          <li>Combined religious revival with economic protest against exploitation.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">4 marks</span></div><div class="q-text">"Describe the work of Shah Waliullah."</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why did Syed Ahmad Barelvi's Jihad Movement fail?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Did Shah Waliullah contribute more to the spread of Islam than anyone else before 1850? Explain your answer."</div></div>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Answer strategy — 4-mark describe</div>
+        <div class="strategy">
+          <div class="step"><div class="step-num">1</div><div class="step-text">Make 4 separate factual points. Each point must include specific detail (not just "he translated the Quran" — say INTO WHICH LANGUAGE and WHY it mattered).</div></div>
+          <div class="step"><div class="step-num">2</div><div class="step-text">No argument or evaluation needed. Just accurate, detailed description.</div></div>
+        </div>
+        <div class="tip"><strong>Exam tip:</strong> When comparing reformers in a 14-mark question, use this structure: argue that SWU was most important (2–3 points), then consider the OTHER reformers' contributions, then conclude with a justified judgment. Saying "all were equally important" earns low marks — you must pick one and defend it.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOPIC 4: SIR SYED -->
+  <div class="topic-card" id="t-syed">
+    <div class="topic-head" onclick="toggle('t-syed')">
+      <span class="topic-heat key">★ Key</span>
+      <span class="topic-title">Sir Syed Ahmed Khan — Aligarh Movement & Two-Nation Theory</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Context & motivation</div>
+        <div class="prose"><p>After 1857, Muslims were devastated — blamed by the British, stripped of land and jobs, and educationally backward. Sir Syed, a Muslim civil servant who had loyally served the British, concluded that Muslims' only path forward was cooperation with — not resistance to — British rule, combined with modern education.</p></div>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Key contributions</div>
+        <ul class="points">
+          <li><strong>MAO School, Aligarh (1875) → MAO College (1877)</strong>: Founded on Oxford/Cambridge model. Taught both modern Western sciences AND Islamic studies. Aimed to produce loyal, educated Muslim leaders who could compete for government positions.</li>
+          <li><strong>Mohammadan Educational Conference (1886)</strong>: Travelling educational reform movement that spread schools across Muslim communities.</li>
+          <li><strong>The Causes of the Indian Revolt (1859)</strong>: A book defending Muslims — argued the revolt was caused by British misgovernance, not Muslim treachery. Helped improve British attitudes toward Muslims.</li>
+          <li><strong>Promoted Urdu</strong>: Championed Urdu as the language of educated Muslims, opposing Hindu leaders who pushed for Hindi in Persian/Arabic script to be replaced.</li>
+          <li><strong>Two-Nation Theory</strong>: Argued that Hindus and Muslims were two separate nations with different religions, cultures, laws, and histories. They could not coexist under one democratic government where Hindus' numerical majority would always dominate Muslims. This idea later became the intellectual foundation for Pakistan.</li>
+          <li><strong>Opposed Congress</strong>: Advised Muslims not to join the Indian National Congress (founded 1885), arguing it represented Hindu interests.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why did Sir Syed Ahmed Khan try to improve relations between Muslims and the British?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why did Sir Syed Ahmed Khan oppose the Indian National Congress?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Was Aligarh College the most important of Sir Syed Ahmed Khan's contributions? Explain your answer."</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> Sir Syed often appears as a 7-mark question in Section B. Cambridge rewards you for showing the connection between his actions and their context — why he did things, not just what he did.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION II: PAKISTAN MOVEMENT -->
+<div id="sec2" class="section-panel">
+  <div class="section-header">
+    <div class="section-tag">Paper 1 — Section II</div>
+    <h2>The Pakistan Movement (1905–1947)</h2>
+    <p>Partition of Bengal · Muslim League · Khilafat · Simon Commission · Congress Rule · Lahore Resolution</p>
+  </div>
+
+  <!-- PARTITION OF BENGAL -->
+  <div class="topic-card" id="t-bengal">
+    <div class="topic-head" onclick="toggle('t-bengal')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Partition of Bengal (1905) & Reversal (1911)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Why Bengal was partitioned (1905)</div>
+        <ul class="points">
+          <li><strong>Administrative reasons</strong>: Bengal was the largest province — 78 million people. Lord Curzon argued it was too large to govern effectively.</li>
+          <li><strong>Muslim benefit</strong>: The new Eastern Bengal & Assam had a Muslim majority. Dhaka became its capital. Muslim leaders welcomed the economic opportunity and political voice this gave them.</li>
+          <li><strong>British strategy</strong>: Many historians argue Curzon also aimed to divide the Hindu-Muslim alliance that was growing in the nationalist movement — classic divide and rule.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Hindu reaction — Swadeshi Movement</div>
+        <ul class="points">
+          <li>Hindu leaders were furious — they saw Bengal as their cultural heartland being broken up.</li>
+          <li>Launched the Swadeshi Movement: boycott of British goods, burning of British cloth, promotion of Indian-made goods.</li>
+          <li>Mass protests, hartals (strikes), and political agitation across India.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Reversal (1911) & Muslim reaction</div>
+        <ul class="points">
+          <li>Under intense Hindu pressure, the British King George V announced the re-unification of Bengal at the Delhi Durbar (1911).</li>
+          <li>Muslims felt betrayed — they had supported the British and received nothing. This reinforced the lesson that they needed their own political organisation to protect their interests.</li>
+          <li>The reversal accelerated the growth and seriousness of the All-India Muslim League, founded just 5 years earlier.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Formation of Muslim League (1906)</div>
+        <ul class="points">
+          <li>The Simla Deputation (1906): 35 Muslim leaders, led by the Aga Khan, met Viceroy Minto to demand separate Muslim electorates — Muslims should only be voted for by Muslim voters. Minto agreed in principle.</li>
+          <li>At Dhaka in December 1906, the All-India Muslim League was formally established under Nawab Salimullah Khan. Its aims: protect Muslim political rights, promote loyalty to the British Crown, and prevent anti-Muslim sentiment.</li>
+          <li><strong>Morley-Minto Reforms (1909)</strong>: Gave Muslims separate electorates — a major victory. But Congress condemned it as divisive.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">4 marks</span></div><div class="q-text">"Describe the terms of the Morley-Minto Reforms of 1909."</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why did the partition of Bengal lead to the formation of the Muslim League?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Was the Partition of Bengal the main reason for the development of a new political party in India in 1906?"</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> The 14-mark question will offer a named reason (Partition of Bengal). You should argue YES it was important, but also bring in other reasons (Swadeshi threat to Muslims, need for separate electorates, Congress domination) and then decide which was most important.</div>
+    </div>
+  </div>
+
+  <!-- KHILAFAT -->
+  <div class="topic-card" id="t-khilafat">
+    <div class="topic-head" onclick="toggle('t-khilafat')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Khilafat Movement (1919–1924)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Background & causes</div>
+        <ul class="points">
+          <li>The Ottoman Sultan was the Caliph — spiritual leader of all Sunni Muslims worldwide. After WWI, Britain and its allies planned to dismember the Ottoman Empire and abolish the Caliphate.</li>
+          <li>Indian Muslims felt this was an attack on Islam itself. They had loyally supported Britain in WWI expecting consideration — this felt like betrayal.</li>
+          <li>The Ali Brothers (Muhammad Ali and Shaukat Ali) launched the Khilafat Movement to pressure Britain to preserve the Caliphate.</li>
+          <li>Gandhi allied with the Khilafat Movement — creating a rare Hindu-Muslim united front against British rule (Non-Cooperation Movement).</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Why it failed</div>
+        <ul class="points">
+          <li><strong>Abolition of the Caliphate by Turks themselves</strong>: In 1924, Mustafa Kemal Atatürk abolished the Ottoman Caliphate to modernise Turkey. The cause the movement was fighting for no longer existed — the movement instantly lost its purpose.</li>
+          <li><strong>Chauri Chaura incident (1922)</strong>: A mob burned a police station, killing 22 officers. Gandhi unilaterally suspended the Non-Cooperation Movement. Muslims felt abandoned by their main ally.</li>
+          <li><strong>Hindu-Muslim tensions</strong>: The alliance was fragile. Violence between communities (Moplah Rebellion in Kerala) eroded trust.</li>
+          <li><strong>British suppression</strong>: The Ali Brothers and other leaders were arrested. The movement lost its organisational leadership.</li>
+          <li><strong>No political gains</strong>: Britain did not change its policy toward Turkey. The movement achieved none of its original aims.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Results / Significance</div>
+        <ul class="points">
+          <li>First major mass political movement of Indian Muslims — showed their capacity for political mobilisation.</li>
+          <li>Deepened Muslim distrust of Congress and Gandhi after the sudden suspension.</li>
+          <li>After 1924, Muslim-Hindu relations deteriorated significantly — the era of cooperation was over.</li>
+          <li>Pushed Muslims toward developing their own separate political identity — the next decade saw growing demand for Muslim-only political solutions.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why did the Khilafat Movement fail?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why was the Khilafat Movement started?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Which affected Hindu-Muslim relations the most — Partition of Bengal, Montague-Chelmsford Reforms, or Nehru Report?"</div></div>
+      </div>
+      <div class="strategy" style="margin-top:1rem;">
+        <div class="strategy-title">7-mark answer structure for "Why did it fail?"</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Open with the most important reason (Turks abolishing the Caliphate themselves). Explain fully.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Add 2–3 other reasons (Chauri Chaura, Hindu-Muslim tensions, British suppression) each in a developed paragraph.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Each paragraph: state the reason → explain HOW it caused failure → show consequence.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SIMON / NEHRU -->
+  <div class="topic-card" id="t-simon">
+    <div class="topic-head" onclick="toggle('t-simon')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Simon Commission & Nehru Report (1927–1929)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Simon Commission (1927)</div>
+        <ul class="points">
+          <li>Appointed by the British government to review the 1919 Montague-Chelmsford Reforms and recommend constitutional changes for India.</li>
+          <li><strong>The problem</strong>: The commission had NO Indian members — all 7 members were British MPs. Both Congress and Muslim League opposed it as a denial of Indian rights to decide their own future.</li>
+          <li>Greeted with "Simon Go Back" protests everywhere it visited.</li>
+          <li>Jinnah condemned it but also used it to push for Muslim demands: separate electorates, one-third Muslim representation in central legislature, residual powers to provinces.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Nehru Report (1928)</div>
+        <ul class="points">
+          <li>Congress responded to Simon Commission by drafting their own constitutional proposals, led by Motilal Nehru.</li>
+          <li><strong>Key proposals that angered Muslims</strong>: Joint electorates (ending separate Muslim electorates), residual powers to the centre (not provinces — which would mean Hindu majority central government controlled everything), no reservation of Muslim seats in Muslim-minority provinces.</li>
+          <li>Jinnah offered amendments to make it acceptable (his "Delhi Proposals" / Fourteen Points) but Congress rejected them.</li>
+          <li>This was a turning point — Jinnah called it the "parting of ways." He had spent 20 years trying to build Hindu-Muslim unity; the Nehru Report convinced him it was impossible.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Jinnah's Fourteen Points (1929)</div>
+        <ul class="points">
+          <li>Jinnah's response to the Nehru Report — his minimum demands for Muslim participation in a united India's constitution.</li>
+          <li>Key points: federal constitution with residual powers to provinces; separate electorates until Muslims chose to abandon them; one-third Muslim representation in central legislature; religious freedom guaranteed; no territorial changes without provincial assembly consent.</li>
+          <li>Congress rejected these. This failure ended Jinnah's hope for a united India solution and pushed him toward the two-nation approach.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">3 marks</span> Source A</div><div class="q-text">"According to Source A, why was there opposition to the Simon Commission?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why did the All-India Muslim League reject the Nehru Report in 1928?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"How successful were political developments in finding a solution between 1909 and 1919?"</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CONGRESS RULE & LAHORE RESOLUTION -->
+  <div class="topic-card" id="t-1940">
+    <div class="topic-head" onclick="toggle('t-1940')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Congress Rule, 1935 Act & Lahore Resolution 1940</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Government of India Act 1935</div>
+        <ul class="points">
+          <li>Introduced provincial autonomy — Indians could govern provinces. The central government remained under British control.</li>
+          <li>Created a federation of British India and Princely States (never fully implemented).</li>
+          <li>Importance: first time real governmental power was given to elected Indian ministers. Set the stage for the 1937 elections.</li>
+          <li>Both Congress and Muslim League opposed aspects of it — Congress wanted full independence, Muslims wanted stronger provincial autonomy safeguards.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Congress Rule (1937–1939)</div>
+        <ul class="points">
+          <li>Congress won a majority in 7 of 11 provinces in the 1937 elections. Muslim League did poorly — won only 25% of reserved Muslim seats.</li>
+          <li>Congress refused coalition government with the League, insisting the League dissolve its identity into Congress.</li>
+          <li><strong>Muslim grievances under Congress Rule</strong>: Vande Mataram (a Hindu nationalist song) was made the national song; Hindi was promoted; Wardha Scheme for education promoted Hindu culture; Muslims faced discrimination in jobs and civil service; cow protection laws passed; mosques facing interference.</li>
+          <li>Jinnah declared <strong>Day of Deliverance</strong> (22 December 1939) when Congress resigned after Britain declared war without consulting Indian leaders. Muslims celebrated Congress leaving power.</li>
+          <li>The Congress Rule experience was decisive — it showed Muslims what majority Hindu rule would look like. Support for the Muslim League surged massively.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Lahore Resolution 1940</div>
+        <ul class="points">
+          <li>Passed on 23 March 1940 at the All-India Muslim League annual session in Lahore.</li>
+          <li>Demanded that the areas in the north-west and east of India where Muslims were in majority should be grouped to constitute independent states (note: plural — not "one Pakistan").</li>
+          <li>Did not use the word "Pakistan" (coined by Choudhry Rahmat Ali in 1933 in Cambridge).</li>
+          <li>Allama Iqbal's 1930 Allahabad Address had earlier envisioned a separate Muslim homeland in north-west India — the intellectual forerunner.</li>
+          <li>Significance: turned the vague idea of a Muslim homeland into an official political demand. The Pakistan Movement now had a clear goal.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">1940–1947 key events</div>
+        <ul class="points">
+          <li><strong>Cripps Mission (1942)</strong>: British offered Dominion status post-war — Congress rejected it ("a post-dated cheque on a failing bank"); Jinnah rejected it because it didn't guarantee a separate Muslim state.</li>
+          <li><strong>Quit India Movement (1942)</strong>: Gandhi launched mass civil disobedience. British arrested all Congress leaders. This actually helped the Muslim League — they cooperated with Britain and gained credibility.</li>
+          <li><strong>Shimla Conference (1945)</strong>: Failed — Congress claimed to represent all Indians; Jinnah insisted only the League could speak for Muslims.</li>
+          <li><strong>1945 Elections</strong>: Muslim League won every single Muslim seat in the central legislature — a massive mandate for Pakistan.</li>
+          <li><strong>Cabinet Mission Plan (1946)</strong>: Proposed a three-tier federal structure keeping India united but with Muslim-majority groups having autonomy. League accepted then rejected; Congress rejected key parts. Plan collapsed.</li>
+          <li><strong>Direct Action Day (16 Aug 1946)</strong>: League called for strikes; massive Hindu-Muslim riots in Calcutta, thousands killed. Showed partition was becoming inevitable.</li>
+          <li><strong>June 3rd Plan (Mountbatten Plan, 1947)</strong>: British announced India would be partitioned and both nations given independence. Punjab and Bengal would be divided.</li>
+          <li><strong>Independence: 14 August 1947</strong> — Pakistan; 15 August 1947 — India.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Was the Day of Deliverance justified?" / "Why was the Lahore Resolution passed in 1940?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">14 marks</span></div><div class="q-text">"How successful were negotiations aimed at independence during the Second World War?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span> Section A</div><div class="q-text">"Was Congress Rule the most important reason for the creation of Pakistan? Do you agree?"</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> "Was the Day of Deliverance justified?" is a classic 7-mark question. Write 3–4 reasons arguing YES it was justified (Muslim grievances under Congress Rule), then briefly present the counter-argument (Congress did bring some development), then give your view. Your stance must be clear.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- SECTION III: POST-INDEPENDENCE -->
+<div id="sec3" class="section-panel">
+  <div class="section-header">
+    <div class="section-tag">Paper 1 — Section III</div>
+    <h2>Post-Independence Pakistan</h2>
+    <p>Early problems · Governors-General · Bangladesh · Zia · Bhutto · Constitutions</p>
+  </div>
+
+  <!-- EARLY PROBLEMS -->
+  <div class="topic-card" id="t-early">
+    <div class="topic-head" onclick="toggle('t-early')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Early Problems of Pakistan (1947–1948)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">The problems</div>
+        <ul class="points">
+          <li><strong>Refugee crisis</strong>: 7–10 million Muslims crossed into Pakistan; equal numbers of Hindus and Sikhs fled to India. No infrastructure to absorb them. Disease, starvation, and violence killed hundreds of thousands during the migration.</li>
+          <li><strong>Division of assets</strong>: India was given the bulk of the British Indian Army, civil service, treasury, and equipment. Pakistan was supposed to get 17.5% of the British Indian treasury (£75 million) — India delayed and reduced the payment. Pakistan received far less military hardware than agreed.</li>
+          <li><strong>Kashmir dispute</strong>: The Hindu Maharaja of Kashmir Hari Singh hesitated — then acceded to India in October 1947 as Pakistani-backed tribal fighters invaded. Pakistan refused to accept Indian accession. The first Kashmir War began immediately. A UN ceasefire left Kashmir divided.</li>
+          <li><strong>Canal Water dispute</strong>: The headwaters of rivers feeding Pakistan's Punjab were in India. India cut water flow to Pakistani canals on 1 April 1948 — crippling agriculture for weeks. Resolved temporarily by the Inter-Dominion Agreement (1948), permanently by the Indus Waters Treaty (1960).</li>
+          <li><strong>Capital problem</strong>: Pakistan had no capital ready. Karachi was designated but lacked government buildings, infrastructure, or facilities for a functioning capital.</li>
+          <li><strong>No constitution</strong>: Pakistan had no constitution of its own — continued under the adapted Government of India Act 1935, a temporary and unsatisfactory arrangement.</li>
+          <li><strong>Economic weakness</strong>: Pakistan inherited mostly agricultural areas; major industries, ports, and financial infrastructure were in India. Karachi was the only port. Most of the skilled Hindu business community had fled to India.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why was there a refugee crisis in 1947–48?" / "Why was there a Canal Water dispute?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"How successful was Pakistan in solving the problems of Partition during 1947 and 1948?"</div></div>
+      </div>
+      <div class="strategy" style="margin-top:1rem;">
+        <div class="strategy-title">14-mark "how successful" structure</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Successes: what problems were resolved (Canal Water treaty, ceasefire in Kashmir, refugees gradually settled, Liaquat Ali Khan built a functioning civil service).</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Failures: what remained unresolved (Kashmir, lack of constitution, economic weakness, refugee rehabilitation incomplete).</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Conclusion: overall judgment — "Pakistan was partially successful but..." with specific evidence.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIAQUAT / GM / MIRZA -->
+  <div class="topic-card" id="t-rulers">
+    <div class="topic-head" onclick="toggle('t-rulers')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Liaquat Ali Khan, Ghulam Muhammad & Iskander Mirza</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Liaquat Ali Khan (PM 1947–1951)</div>
+        <ul class="points">
+          <li><strong>Objectives Resolution (1949)</strong>: Declared Pakistan would be governed on Islamic principles — foundation for all future constitutions.</li>
+          <li>Stabilised the refugee crisis through major administrative effort.</li>
+          <li>Maintained relations with both the US and the non-aligned world.</li>
+          <li>Negotiated the Liaquat-Nehru Pact (1950) on minority rights.</li>
+          <li><strong>Assassinated October 1951</strong> at Rawalpindi — killer shot dead immediately, conspiracy never fully explained. His death plunged Pakistan into political instability.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Malik Ghulam Muhammad (Governor-General 1951–1955)</div>
+        <ul class="points">
+          <li>A bureaucrat, not a politician. Treated Pakistan as a personal domain.</li>
+          <li>Dismissed Prime Ministers at will — dismissed Khwaja Nazimuddin in 1953 despite him having a parliamentary majority (unconstitutional).</li>
+          <li>Maulvi Tamizuddin Case (1954): Dismissed the Constituent Assembly when it tried to limit his powers. Pakistan's Federal Court controversially upheld this.</li>
+          <li>His arbitrary use of power severely damaged Pakistan's democratic traditions at the crucial formative stage.</li>
+          <li>Introduced One Unit Scheme (1955) — merged all West Pakistan provinces into one unit, partly to balance East Pakistan's population advantage.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Iskander Mirza (President 1956–1958)</div>
+        <ul class="points">
+          <li>Pakistan finally got its first constitution in 1956 — declared Pakistan an Islamic Republic.</li>
+          <li>Mirza constantly manipulated politics — dismissed 4 prime ministers in 2 years. He engineered political crises to maintain personal power.</li>
+          <li><strong>Martial Law — October 1958</strong>: Mirza abrogated the constitution, imposed martial law, and appointed General Ayub Khan as Chief Martial Law Administrator — thinking he could control him.</li>
+          <li>Just 20 days later, Ayub Khan deposed Mirza himself and exiled him to London. Pakistan's first military takeover was complete.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">4 marks</span></div><div class="q-text">"Describe the constitutional crisis during 1954–55."</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"Why was there a constitutional crisis in 1958?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Which contributed most to Pakistan's problems between 1948 and 1958 — Liaquat Ali Khan, Ghulam Muhammad, or Iskander Mirza?"</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> For the 3-way comparison 14-mark question, do not write equal amounts on each person — that suggests you have no judgment. Argue a case: most candidates find Ghulam Muhammad the most damaging (dismissed elected governments unconstitutionally, undermined democracy at its foundation). Back your choice with evidence.</div>
+    </div>
+  </div>
+
+  <!-- BANGLADESH -->
+  <div class="topic-card" id="t-bd">
+    <div class="topic-head" onclick="toggle('t-bd')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Creation of Bangladesh (1971)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Grievances of East Pakistan</div>
+        <ul class="points">
+          <li><strong>Language issue</strong>: Government declared Urdu the only national language — Bengalis (East Pakistan's majority) were furious. Bengali Language Movement (1952) — students shot dead on 21 February, now International Mother Language Day.</li>
+          <li><strong>Economic discrimination</strong>: East Pakistan generated most of Pakistan's foreign exchange (jute exports) but received less development spending. West Pakistan got the lion's share of industry, infrastructure, and government investment.</li>
+          <li><strong>Political under-representation</strong>: Despite having a larger population, East Pakistan was under-represented in the civil service, military, and federal government — dominated by West Pakistanis.</li>
+          <li><strong>Geographical separation</strong>: 1,000 miles of India between the two wings made unified governance difficult and East Pakistanis felt remote and neglected.</li>
+          <li><strong>Cultural difference</strong>: Bengalis had a distinct language, literature, and cultural identity that West Pakistani leaders often dismissed or tried to suppress.</li>
+          <li><strong>One Unit Scheme</strong>: Merged West Pakistan provinces — giving West Pakistan parity with East despite East's larger population. Seen as another injustice.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">The crisis of 1970–71</div>
+        <ul class="points">
+          <li><strong>1970 elections</strong>: Awami League (Mujibur Rahman) won a massive majority — enough to form government alone. PPP (Bhutto) won in West Pakistan. Bhutto refused to accept Mujib as PM; Yahya Khan delayed transfer of power.</li>
+          <li><strong>Operation Searchlight (March 1971)</strong>: Pakistan Army launched a brutal military crackdown in East Pakistan — targeting Awami League supporters, intellectuals, Hindus. Thousands killed. Mujib arrested.</li>
+          <li><strong>War and Indian intervention</strong>: 10 million refugees fled to India. India trained Mukti Bahini guerrillas and eventually entered the war directly (December 1971).</li>
+          <li><strong>Surrender (16 December 1971)</strong>: Pakistani forces surrendered in Dhaka — 93,000 Pakistani soldiers became prisoners of war. Bangladesh declared independence.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why did East Pakistan separate from West Pakistan in 1971?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Was the language issue the main reason for the separation of East Pakistan? Explain your answer."</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ZIA -->
+  <div class="topic-card" id="t-zia">
+    <div class="topic-head" onclick="toggle('t-zia')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">General Zia ul-Haq (1977–1988)</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">How he came to power</div>
+        <ul class="points">
+          <li>Bhutto's PPP won 1977 elections but opposition alleged massive rigging. Protests paralysed the country.</li>
+          <li>General Zia ul-Haq (Army Chief appointed by Bhutto) launched a coup on 5 July 1977 — Operation Fair Play.</li>
+          <li>Bhutto was arrested, tried for murder, and hanged in April 1979 — a deeply controversial decision.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Islamisation policies</div>
+        <ul class="points">
+          <li><strong>Hudood Ordinances (1979)</strong>: Introduced punishments prescribed by Islamic law (hadd) — flogging for alcohol, amputation for theft, stoning for adultery. Highly controversial; widely criticised for being applied selectively against women and minorities.</li>
+          <li><strong>Zakat and Ushr</strong>: Compulsory Islamic tax deducted from bank accounts. Shia Muslims protested violently and were exempted.</li>
+          <li><strong>Islamisation of economy</strong>: Interest (riba) was officially prohibited; replaced with profit-sharing schemes. In practice largely ineffective.</li>
+          <li><strong>Education reform</strong>: Islamic studies made compulsory. Madrasa education expanded massively.</li>
+          <li><strong>Legal changes</strong>: Law of Evidence (Qanun-e-Shahadat) gave women's testimony half the weight of men's in certain cases. Blasphemy laws strengthened (Section 295-C).</li>
+          <li><strong>Media censorship</strong>: Strict censorship imposed. Women newsreaders required to cover their heads.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Afghan War and US relations</div>
+        <ul class="points">
+          <li>Soviet invasion of Afghanistan (1979) transformed Pakistan's geopolitical importance.</li>
+          <li>Pakistan became the frontline state for US-CIA weapons and funding to Afghan Mujahideen. Billions in aid flooded in.</li>
+          <li>Millions of Afghan refugees entered Pakistan. Gun and drug culture spread widely.</li>
+          <li>Zia used the Afghan war to legitimise his rule and obtain international support, delaying pressure for democracy.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Assessment — successes and failures</div>
+        <ul class="points">
+          <li><strong>Successes</strong>: Brought political stability after Bhutto era chaos; economic growth was reasonable; nuclear programme advanced; Afghan war brought massive aid; Islamic identity of Pakistan strengthened for some.</li>
+          <li><strong>Failures</strong>: Democracy suppressed for 11 years; human rights abused; sectarian violence increased; women's rights set back; gun/drug culture spread; blasphemy laws misused; press freedom eliminated.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why did Zia ul-Haq find it difficult to rule Pakistan during the late 1980s?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span></div><div class="q-text">"Was the promotion of Islamic values the most important achievement of Zia ul-Haq's domestic policies 1977–1988?"</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> Zia is a favourite 14-mark question. The named factor (Islamic values) is the one you must evaluate. Argue YES it was important (Islamisation policies listed above), then argue NO — other achievements matter too (political stability, economic growth, Afghan strategy). Conclude with a clear verdict.</div>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOREIGN POLICY -->
+<div id="fp" class="section-panel">
+  <div class="section-header">
+    <div class="section-tag">Paper 1 — Foreign Policy</div>
+    <h2>Pakistan's Foreign Relations</h2>
+    <p>India · USA · USSR/China · UN · Nuclear programme</p>
+  </div>
+
+  <div class="topic-card" id="t-india">
+    <div class="topic-head" onclick="toggle('t-india')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Relations with India & Kashmir Issue</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Key phases</div>
+        <ul class="points">
+          <li><strong>First Kashmir War (1947–48)</strong>: Tribal fighters entered Kashmir; Maharaja acceded to India. UN brokered ceasefire; Kashmir divided at Line of Control. UN resolution promised a plebiscite — never held.</li>
+          <li><strong>1965 War</strong>: Operation Gibraltar — Pakistan sent irregular forces into Kashmir hoping a mass uprising would follow. India crossed the international border into Punjab. 17 days of heavy fighting. USSR-brokered Tashkent Agreement (1966) — both sides returned to pre-war positions. Seen as a stalemate; Ayub Khan's reputation damaged.</li>
+          <li><strong>1971 War</strong>: Pakistani army surrendered in Dhaka. India was the dominant power. Simla Agreement (1972) — bilateral negotiations only; Line of Control in Kashmir formally accepted. Pakistan recognised Bangladesh.</li>
+          <li><strong>Kargil Crisis (1999)</strong>: Pakistani forces occupied Kargil peaks in Indian-controlled Kashmir. Intense fighting; international pressure (especially US) forced Pakistan to withdraw. Brought both nuclear-armed countries to the brink of war.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Periods of engagement</div>
+        <ul class="points">
+          <li>Composite Dialogue processes attempted in 1990s under Nawaz Sharif and Vajpayee — made limited progress.</li>
+          <li>Water sharing: Indus Waters Treaty (1960) — World Bank brokered; generally held even during wars.</li>
+          <li>Trade: always limited and politically driven. Normalisation repeatedly tried and abandoned.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why has India-Pakistan relationship been so difficult since 1947?"</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">14 marks</span> / <span class="marks-badge teal">10 marks</span></div><div class="q-text">"How successful have India and Pakistan been in finding a solution to the Kashmir issue between 1947 and 1999?"</div></div>
+      </div>
+      <div class="strategy" style="margin-top:1rem;">
+        <div class="strategy-title">10-mark "how successful" structure (Section A question d)</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">SUCCESSES: ceasefire 1948, UN recognition of dispute, Tashkent, Simla Agreement, Indus Waters Treaty.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">FAILURES: no plebiscite ever held, three wars fought, Kargil 1999, Kashmir remains divided.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Conclusion: overall verdict — "largely unsuccessful because..." — note that the fundamental issue (who controls Kashmir) remains completely unresolved.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-usa">
+    <div class="topic-head" onclick="toggle('t-usa')">
+      <span class="topic-heat key">★ Key</span>
+      <span class="topic-title">Relations with USA, USSR, China & Muslim World</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">United States</div>
+        <ul class="points">
+          <li>Pakistan joined SEATO (1954) and CENTO (1955) — American-led anti-communist alliances. Received military and economic aid.</li>
+          <li>Relations cooled in 1965 when US cut aid during the India-Pakistan war.</li>
+          <li>Nixon-Kissinger used Pakistan as back-channel to open relations with China (1971) — Pakistan played a vital intermediary role.</li>
+          <li>Worst point: 1979 when Pakistan's US Embassy was burned during anti-American protests following the Iranian Revolution.</li>
+          <li>Afghan War (1979–89) — Pakistan became America's most important ally. Billions in aid, weapons, and CIA cooperation against the Soviets.</li>
+          <li>Post-Cold War: US imposed sanctions when Pakistan tested nuclear weapons (1998). Relations deteriorated sharply.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">USSR / Russia</div>
+        <ul class="points">
+          <li>Pakistan's pro-Western stance (SEATO/CENTO) created immediate tensions with the USSR.</li>
+          <li>USSR supported India — supplied weapons, vetoed UN resolutions on Kashmir.</li>
+          <li>1966 Tashkent Agreement — positive moment, USSR mediated peace after 1965 war.</li>
+          <li>Soviet invasion of Afghanistan (1979) made USSR Pakistan's direct adversary. Pakistan sheltered Mujahideen.</li>
+          <li>After Soviet withdrawal (1989), relations gradually normalised.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">China</div>
+        <ul class="points">
+          <li>Relations began poorly — both fought on opposite sides in the Cold War.</li>
+          <li>Turned strongly positive from early 1960s. Border agreement (1963) — Pakistan ceded some Kashmir territory to China; China gave territorial recognition.</li>
+          <li>China became Pakistan's most reliable long-term ally — consistently supported Pakistan at UN on Kashmir, provided military technology, helped build Pakistan's nuclear programme.</li>
+          <li>The "all-weather friendship" — described as "higher than mountains, deeper than oceans."</li>
+          <li>China vetoed multiple UN resolutions against Pakistan. Modern CPEC (China-Pakistan Economic Corridor) is the latest manifestation.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Muslim World & UN</div>
+        <ul class="points">
+          <li>Pakistan was founding member of the United Nations (1947) — needed international recognition and legitimacy, a forum for Kashmir, and access to economic institutions.</li>
+          <li>Active in OIC (Organisation of Islamic Cooperation). Hosted OIC summit in Lahore 1974.</li>
+          <li>Supported Palestinian cause consistently. Refused to recognise Israel.</li>
+          <li>Relations with Iran: warm under Shah (fellow CENTO member); cooled sharply after Iranian Revolution (1979) — Shia-Sunni sectarian tension spilled over.</li>
+          <li>Left SEATO in 1972 after it failed to support Pakistan in 1971 war. Left CENTO in 1979.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Nuclear Programme</div>
+        <ul class="points">
+          <li>Bhutto launched programme seriously after 1971 defeat ("they have the bomb, we will eat grass"). Dr A.Q. Khan returned from Netherlands with centrifuge technology.</li>
+          <li>May 1998 — Pakistan tested 5 nuclear devices at Chagai (Balochistan) in response to India's tests. Massive international sanctions followed.</li>
+          <li><strong>Difficulties as a nuclear state</strong>: US sanctions cut off military and economic aid. Financial crisis deepened. International isolation. Pressure to sign NPT (Nuclear Non-Proliferation Treaty) and CTBT. A.Q. Khan network controversy exposed (2004).</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">7 marks</span></div><div class="q-text">"Why did Pakistan apply for membership of the United Nations in 1947?" / "Why did Pakistan leave SEATO?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">7 marks</span></div><div class="q-text">"What difficulties did Pakistan face as a nuclear power in the 1980s and 1990s?"</div></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- PAPER 2 GEOGRAPHY -->
+<div id="p2" class="section-panel">
+  <div class="section-header">
+    <div class="section-tag">Paper 2 — Environment of Pakistan</div>
+    <h2>Geography: Full Predicted Topics</h2>
+    <p>Topography · Climate · Agriculture · Power · Industry · Population · Transport</p>
+  </div>
+
+  <div class="topic-card" id="t-topo">
+    <div class="topic-head" onclick="toggle('t-topo')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Topography — Landforms of Pakistan</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">The main regions</div>
+        <ul class="points">
+          <li><strong>Northern Mountains</strong>: Karakoram, Himalayas, Hindu Kush. K2 (8,611m) is the world's second highest peak. Glaciers feed the major rivers. Sparse population due to difficult terrain.</li>
+          <li><strong>Western Mountains & Plateaus</strong>: Sulaiman, Kirthar, Makran ranges. Balochistan Plateau — high elevation, arid, sparsely populated. Problems: poor soil, lack of water, difficult communications.</li>
+          <li><strong>Upper Indus Plain</strong>: Punjab heartland — fertile, well-irrigated, densely populated. Major agricultural zone. Flat land ideal for canal irrigation.</li>
+          <li><strong>Lower Indus Plain</strong>: Sindh — also fertile but hotter and drier. Relies heavily on Indus irrigation. Prone to flooding.</li>
+          <li><strong>Flood Plains</strong>: Active flood plain (flooded annually), old flood plain (terraced land above flood level). Features: meanders, levees, ox-bow lakes.</li>
+          <li><strong>Balochistan Plateau farming problems</strong>: Thin, rocky soil; very low rainfall; no perennial rivers; only Karez systems provide irrigation; steep slopes cause erosion; poor road connectivity.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">Map Q</span></div><div class="q-text">Identify and label physical features on a map of Pakistan. Measure distances. Describe the relief of an area.</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">6 marks</span></div><div class="q-text">"Explain the problems facing farmers in Balochistan." / "Describe the features of an active flood plain."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"Compare the Upper Indus Plain and the Balochistan Plateau as regions for farming. Which is better suited? Explain."</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> Geography Paper 2 always has a map-based compulsory question. Practise identifying Pakistan's provinces, major cities, rivers, mountains, and dams on a blank map. Always carry a ruler — distance measurement questions appear every year.</div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-climate">
+    <div class="topic-head" onclick="toggle('t-climate')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Climate — Monsoon & Western Depressions</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">The Monsoon</div>
+        <ul class="points">
+          <li><strong>Causes</strong>: In summer, the Asian landmass heats up faster than the Indian Ocean. Low pressure develops over the land. Moist wind is sucked northward from the Arabian Sea and Bay of Bengal.</li>
+          <li><strong>Route in Pakistan</strong>: Enters from the Bay of Bengal into India first (June), reaches Pakistan by late June/July. The Arabian Sea branch enters through Sindh. Total duration: July–September.</li>
+          <li><strong>Rainfall distribution</strong>: Heaviest in the north-east (Murree, Kashmir — over 1500mm). Decreasing westward and southward. Karachi gets very little monsoon rain. Balochistan is almost entirely missed.</li>
+          <li><strong>Why NW Pakistan gets less rainfall</strong>: Mountains block moist air; by the time the monsoon reaches this far, most moisture has already fallen; distance from moisture source; rain-shadow effect of mountain ranges.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Western Depressions</div>
+        <ul class="points">
+          <li>Low-pressure systems that move east from the Mediterranean and Caspian Sea in winter (December–March).</li>
+          <li>Bring winter rainfall and snowfall to northern Pakistan and the western highlands.</li>
+          <li>Vitally important for wheat growing (winter crop needs this moisture) and for recharging groundwater and glaciers.</li>
+          <li>Karachi occasionally receives rain from these systems when they dip south.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">Climate graph</span></div><div class="q-text">"Using the climate graph, describe the rainfall pattern at Station X. Compare it with Station Y."</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">6 marks</span></div><div class="q-text">"Explain why the monsoon brings heavy rain to eastern Pakistan but very little to Balochistan."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">6 marks</span></div><div class="q-text">"Explain why western depressions are important to Pakistan's farming."</div></div>
+      </div>
+      <div class="strategy" style="margin-top:1rem;">
+        <div class="strategy-title">How to answer a climate graph question</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">State the highest rainfall month and amount, lowest month and amount.</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Describe the seasonal pattern (e.g. "rainfall is concentrated in July-September, showing the monsoon influence").</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">For comparison: use connectives like "whereas," "in contrast," "both stations..."</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Always quote figures from the graph — answers without data from the graph lose marks.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-agri">
+    <div class="topic-head" onclick="toggle('t-agri')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Agriculture — Major Crops & Irrigation</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">The four major crops</div>
+        <ul class="points">
+          <li><strong>Wheat</strong>: Rabi (winter) crop. Sown October–November, harvested March–April. Grown across Punjab and Sindh. Needs cool moist conditions for germination, warm dry conditions at harvest. Pakistan's staple food crop.</li>
+          <li><strong>Rice</strong>: Kharif (summer) crop. Sown May–June, harvested October–November. Requires standing water — grown in canal-irrigated areas of Punjab and Sindh. Basmati rice from Punjab is a major export earner.</li>
+          <li><strong>Cotton</strong>: Kharif crop. Grown mainly in Punjab and Sindh. Needs long, hot summers and little rain at boll-opening. Pakistan's most important cash crop — raw material for textile industry (Pakistan's biggest industry). Over 60% of export earnings from cotton and textiles.</li>
+          <li><strong>Sugarcane</strong>: Kharif crop. Needs heavy irrigation, high temperatures, fertile soil. Grown mainly in Punjab. Raw material for Pakistan's sugar industry.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Waterlogging & Salinity</div>
+        <ul class="points">
+          <li><strong>Waterlogging causes</strong>: Over-irrigation raises the water table. Seepage from unlined canals. Poor drainage in flat areas. Water table rises above root zone — crops drown.</li>
+          <li><strong>Salinity causes</strong>: When waterlogged land dries, water evaporates leaving dissolved salts behind. Saline water used for irrigation. Natural salts in soil accumulate over time.</li>
+          <li><strong>Effects</strong>: Reduced crop yields, land abandonment, soil structure destroyed.</li>
+          <li><strong>Solutions</strong>: SCARP (Salinity Control and Reclamation Project) — tube wells to pump out water. Lining of canals. Better drainage networks. Crop rotation. Use of gypsum to treat saline soils.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Irrigation systems</div>
+        <ul class="points">
+          <li><strong>Canals</strong>: World's largest irrigation network. Headworks and barrages divert river water into main canals → branch canals → distributaries → watercourses → fields.</li>
+          <li><strong>Tube wells</strong>: Pump groundwater. Important in areas between canals. Can cause waterlogging if overused.</li>
+          <li><strong>Karez (qanat)</strong>: Traditional underground channels used in Balochistan. Gravity-fed — no energy needed. Tap water table at higher elevation, channel it underground to lower fields. Sustainable but limited in capacity.</li>
+          <li><strong>Major dams</strong>: Tarbela (Indus), Mangla (Jhelum) — store water for dry season irrigation and hydroelectric power.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">6 marks</span></div><div class="q-text">"Explain the causes of waterlogging and salinity in Pakistan." / "Describe the conditions needed to grow cotton."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"Explain how the Karez system works and why it is important to Balochistan farmers." / Compare two different irrigation methods.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-power">
+    <div class="topic-head" onclick="toggle('t-power')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Power Resources & Load Shedding</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Types of power</div>
+        <ul class="points">
+          <li><strong>Hydroelectric Power (HEP)</strong>: Tarbela and Mangla dams provide ~30% of electricity. Advantages: renewable, no fuel cost, clean. Disadvantages: siltation of reservoirs, seasonal variation (low in dry winters), high construction cost, displacement of communities.</li>
+          <li><strong>Thermal (oil/gas)</strong>: Largest share of electricity. Burns natural gas, oil, or coal. Advantages: reliable, can increase output quickly. Disadvantages: expensive fuel, air pollution, gas reserves depleting.</li>
+          <li><strong>Nuclear</strong>: KANUPP (Karachi), CHASNUPP (Chashma). Small contribution currently but government expanding. Advantages: large output, no carbon emissions. Disadvantages: high cost, radioactive waste, safety concerns, international pressure.</li>
+          <li><strong>Solar &amp; Wind</strong>: Rapidly growing. Sindh and Balochistan have excellent solar potential. Jhimpir wind corridor in Sindh. Advantages: free fuel, renewable, no pollution. Disadvantages: intermittent, storage problems, high initial cost.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Load shedding — causes & effects</div>
+        <ul class="points">
+          <li><strong>Causes</strong>: Demand grows faster than supply. Transmission losses (old, inefficient grid). Electricity theft widespread. Circular debt — power companies can't pay fuel suppliers. Seasonal variation in HEP. Lack of investment in new generation capacity.</li>
+          <li><strong>Effects</strong>: Industry loses production; businesses use expensive generators. Agricultural tube wells can't operate — crop yields fall. Schools and hospitals affected. Daily life disrupted — up to 12–18 hours of load shedding at peak.</li>
+          <li><strong>Difficulties in providing power to all areas</strong>: Remote mountain communities too far from grid; difficult terrain makes power line construction expensive; low population density makes the investment uneconomical; communities rely on kerosene and firewood instead.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">6 marks</span></div><div class="q-text">"Explain the causes of electricity shortage in Pakistan."</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">6 marks</span></div><div class="q-text">"Explain the advantages and disadvantages of hydroelectric power for Pakistan."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"Should Pakistan invest in renewable energy rather than nuclear power? Discuss."</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-pop">
+    <div class="topic-head" onclick="toggle('t-pop')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Population — Birth Rate, Death Rate, DTM & Migration</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Key concepts</div>
+        <ul class="points">
+          <li><strong>Birth rate reasons (high)</strong>: Cultural preference for large families; sons provide security in old age; lack of family planning access/awareness; early marriage; low female education and employment; agricultural families need labour; religious attitudes.</li>
+          <li><strong>Birth rate solutions</strong>: Female education; improving women's status; family planning services; incentives for smaller families; economic development.</li>
+          <li><strong>Death rate reasons (declining)</strong>: Improved healthcare, vaccination programmes, cleaner water, better nutrition, improved sanitation, better medical training.</li>
+          <li><strong>Effects of high birth rate</strong>: Strain on schools, hospitals, housing, jobs, food supply. Large dependent youth population. Urbanisation pressure. Government spending stretched.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Demographic Transition Model (DTM)</div>
+        <ul class="points">
+          <li><strong>Stage 1</strong>: High birth rate, high death rate — small population. Pre-industrial societies.</li>
+          <li><strong>Stage 2</strong>: High birth rate, falling death rate — rapid population growth. Pakistan is in this stage transitioning to Stage 3.</li>
+          <li><strong>Stage 3</strong>: Falling birth rate, low death rate — growth slows.</li>
+          <li><strong>Stage 4</strong>: Low birth rate, low death rate — stable population. Developed countries.</li>
+          <li>Pakistan sits between Stage 2 and Stage 3: death rates have fallen significantly; birth rates are falling but still high.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Population pyramids</div>
+        <ul class="points">
+          <li>Wide base = high birth rate. Pakistan's pyramid has a very wide base — large young population.</li>
+          <li>Rapid tapering = high death rate in older age groups. Small elderly population.</li>
+          <li>How to describe: comment on the shape (wide/narrow base), the gender balance, which age groups are largest, and what this tells you about birth and death rates.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Migration</div>
+        <ul class="points">
+          <li><strong>Rural to urban (internal)</strong>: Push factors — poverty, unemployment, lack of services, floods, drought. Pull factors — jobs, hospitals, schools, entertainment, higher wages.</li>
+          <li><strong>Overseas migration</strong>: To Middle East (construction, labour), UK (established Pakistani diaspora), USA. Remittances are a major source of income for Pakistan — billions of dollars annually. Negative: brain drain, family separation, social disruption in origin villages.</li>
+          <li><strong>Katchi Abadis</strong>: Informal settlements/slums in Pakistan's cities created by rapid rural-urban migration. Problems: no clean water, no sewage, overcrowding, lack of schools, insecure land tenure. Self-help schemes aim to improve conditions.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">Population pyramid</span></div><div class="q-text">"Describe the population structure shown in the pyramid." / "What does this pyramid tell you about birth and death rates?"</div></div>
+        <div class="q-box red"><div class="q-meta red"><span class="marks-badge red">6 marks</span></div><div class="q-text">"Explain why Pakistan has a high birth rate." / "Explain the push and pull factors causing rural-urban migration in Pakistan."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"Explain the problems caused by rapid population growth in Pakistan and suggest solutions."</div></div>
+      </div>
+      <div class="strategy" style="margin-top:1rem;">
+        <div class="strategy-title">6-mark explanation structure (used constantly in P2)</div>
+        <div class="step"><div class="step-num">1</div><div class="step-text">Make your first point (a specific cause/reason/factor).</div></div>
+        <div class="step"><div class="step-num">2</div><div class="step-text">Explain HOW and WHY — this is where most students lose marks. Don't just name the factor, show the mechanism.</div></div>
+        <div class="step"><div class="step-num">3</div><div class="step-text">Give a specific example or statistic if you know one.</div></div>
+        <div class="step"><div class="step-num">4</div><div class="step-text">Repeat for 2–3 more points. Aim for 3 well-developed points for a 6-mark question.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="topic-card" id="t-industry">
+    <div class="topic-head" onclick="toggle('t-industry')">
+      <span class="topic-heat">🔥 Very Hot</span>
+      <span class="topic-title">Industry, Trade & Transport</span>
+      <span class="toggle-icon">+</span>
+    </div>
+    <div class="topic-body">
+      <div class="block">
+        <div class="block-label">Major industries</div>
+        <ul class="points">
+          <li><strong>Cotton textiles</strong>: Pakistan's largest industry. Concentrated in Karachi, Faisalabad, Lahore. Uses domestically grown cotton. Produces yarn, cloth, garments. Over 60% of export earnings. Problems: old machinery, energy costs, water use, competition from Bangladesh and China.</li>
+          <li><strong>Sugar</strong>: Large industry in Punjab and Sindh near sugarcane growing areas (to minimise transport of bulky raw material). Seasonal — operates during harvest period.</li>
+          <li><strong>Iron & Steel</strong>: Pakistan Steel Mills in Karachi (near port for imported iron ore and coal). Supplies construction and engineering industries.</li>
+          <li><strong>Factors affecting industrial location</strong>: Raw materials nearby; water supply; labour availability; transport links; market access; energy; government policy (EPZs, tax incentives).</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Trade & Balance of Payments</div>
+        <ul class="points">
+          <li><strong>Main exports</strong>: Cotton textiles and garments, rice, leather goods, sports goods (Sialkot), surgical instruments (Sialkot).</li>
+          <li><strong>Main imports</strong>: Petroleum, machinery, chemicals, edible oil, fertiliser, iron/steel.</li>
+          <li><strong>Trade deficit</strong>: Imports > Exports. Pakistan consistently runs a trade deficit — imports cost more than exports earn. Causes: low value of raw material exports, expensive oil imports, limited industrial exports.</li>
+          <li><strong>Balance of Payments</strong>: Overall picture — trade deficit partially offset by remittances from overseas Pakistanis. But still often negative.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">Transport</div>
+        <ul class="points">
+          <li><strong>Railways</strong>: Colonial-era network; connects major cities. Problems: old stock, slow, under-investment, accidents. Important for freight and long-distance passengers.</li>
+          <li><strong>Motorways</strong>: M1–M9 motorway network, modern and well-maintained. Connects Peshawar to Karachi. Boosted trade and logistics significantly.</li>
+          <li><strong>Problems in mountainous areas</strong>: Landslides block roads; high construction cost; steep gradients; thin population makes investment hard to justify; snow closure in winter; earthquake damage. Many communities accessible only by jeep tracks or on foot.</li>
+        </ul>
+      </div>
+      <hr class="rule">
+      <div class="block">
+        <div class="block-label">How questions appear</div>
+        <div class="q-box"><div class="q-meta"><span class="marks-badge">6 marks</span></div><div class="q-text">"Explain why Pakistan has a trade deficit." / "Explain the problems of providing transport in mountainous areas of Pakistan."</div></div>
+        <div class="q-box teal"><div class="q-meta teal"><span class="marks-badge teal">10 marks</span></div><div class="q-text">"Explain why the cotton textile industry is so important to Pakistan's economy and what problems it faces."</div></div>
+      </div>
+      <div class="tip"><strong>Exam tip:</strong> For industry questions, always give a specific named example (e.g. "Faisalabad, known as the Manchester of Pakistan, is the centre of cotton textile production"). Specific named examples separate good answers from generic ones.</div>
+    </div>
+  </div>
+
+</div>
+
+</main>
 
 <script>
 function show(id) {
-  document.querySelectorAll('.topic').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.section-panel').forEach(p => p.classList.remove('active'));
   document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
   document.getElementById(id).classList.add('active');
   const btns = document.querySelectorAll('.nav-btn');
-  const map = ['mughal','1857','swu','syed','hsu','howto'];
-  btns[map.indexOf(id)].classList.add('active');
-  window.scrollTo({top:0, behavior:'smooth'});
+  const map = { home: 0, sec1: 1, sec2: 2, sec3: 3, fp: 4, p2: 5 };
+  if (map[id] !== undefined) btns[map[id]].classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+function toggle(id) {
+  const card = document.getElementById(id);
+  card.classList.toggle('open');
 }
 </script>
 </body>
