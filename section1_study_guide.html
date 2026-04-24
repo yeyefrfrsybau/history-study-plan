@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>P1 Section 1 — Study Guide</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1208;
+    --paper: #faf6ee;
+    --paper2: #f3ede0;
+    --accent: #8b2020;
+    --gold: #b5862a;
+    --muted: #6b5e4a;
+    --border: #d4c4a0;
+    --green: #1a4a2e;
+    --blue-dark: #1a2a4a;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Source Serif 4', Georgia, serif;
+    font-size: 16px;
+    line-height: 1.75;
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+  .masthead {
+    text-align: center;
+    border-top: 3px solid var(--ink);
+    border-bottom: 3px solid var(--ink);
+    padding: 1.25rem 0;
+    margin-bottom: 0.4rem;
+  }
+  .masthead-sub {
+    font-size: 11px;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.3rem;
+  }
+  .masthead h1 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 2.4rem;
+    font-weight: 900;
+    line-height: 1.1;
+    color: var(--ink);
+  }
+  .masthead-rule {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 0.6rem auto;
+    width: 60%;
+  }
+  .nav-strip {
+    display: flex;
+    gap: 0;
+    border-bottom: 2px solid var(--ink);
+    margin-bottom: 2rem;
+    overflow-x: auto;
+  }
+  .nav-btn {
+    padding: 0.55rem 1.1rem;
+    font-family: 'Source Serif 4', serif;
+    font-size: 13px;
+    background: none;
+    border: none;
+    border-right: 1px solid var(--border);
+    cursor: pointer;
+    color: var(--muted);
+    white-space: nowrap;
+    transition: background 0.15s, color 0.15s;
+  }
+  .nav-btn:hover { background: var(--paper2); color: var(--ink); }
+  .nav-btn.active { background: var(--ink); color: var(--paper); font-weight: 600; }
+
+  .topic { display: none; }
+  .topic.active { display: block; }
+
+  .topic-header {
+    display: flex;
+    align-items: baseline;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.75rem;
+  }
+  .topic-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 3rem;
+    font-weight: 900;
+    color: var(--border);
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .topic-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--ink);
+  }
+  .topic-sub {
+    font-size: 13px;
+    color: var(--muted);
+    letter-spacing: 0.05em;
+    margin-top: 0.2rem;
+  }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 1.5rem; }
+  @media (max-width: 620px) { .two-col { grid-template-columns: 1fr; } }
+
+  .card {
+    background: var(--paper2);
+    border: 1px solid var(--border);
+    border-radius: 2px;
+    padding: 1rem 1.1rem;
+  }
+  .card-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.6rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 0.4rem;
+  }
+  .card ul { padding-left: 1.1rem; }
+  .card li { font-size: 14px; margin-bottom: 0.3rem; line-height: 1.55; }
+  .card li strong { color: var(--ink); font-weight: 600; }
+
+  .q-box {
+    border-left: 4px solid var(--accent);
+    background: #f9f0f0;
+    padding: 0.9rem 1.1rem;
+    margin-bottom: 1rem;
+    border-radius: 0 2px 2px 0;
+  }
+  .q-box .q-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .q-box .q-text {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 0.5rem;
+  }
+  .q-box .marks {
+    display: inline-block;
+    background: var(--accent);
+    color: white;
+    font-size: 11px;
+    padding: 1px 7px;
+    border-radius: 2px;
+    font-weight: 600;
+    font-family: 'Source Serif 4', serif;
+  }
+
+  .answer-box {
+    border: 1px solid var(--border);
+    background: white;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  .answer-box .a-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+  }
+  .answer-box p { font-size: 14px; margin-bottom: 0.5rem; color: var(--ink); }
+  .answer-box p:last-child { margin-bottom: 0; }
+
+  .tip-box {
+    border: 1px dashed var(--gold);
+    background: #fdf8ee;
+    padding: 0.8rem 1rem;
+    margin-bottom: 1.5rem;
+    border-radius: 2px;
+  }
+  .tip-box .t-label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--gold);
+    font-weight: 600;
+    margin-bottom: 0.35rem;
+  }
+  .tip-box p { font-size: 13.5px; color: var(--muted); }
+
+  h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin: 1.4rem 0 0.6rem;
+    color: var(--ink);
+  }
+  h3::before { content: '— '; color: var(--border); }
+
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    padding: 2px 8px;
+    border-radius: 20px;
+    font-weight: 600;
+    margin-right: 4px;
+  }
+  .pill-red { background: #f9e0e0; color: var(--accent); }
+  .pill-green { background: #e0f0e8; color: var(--green); }
+  .pill-gold { background: #fdf0d0; color: var(--gold); }
+
+  .section-divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    margin: 2rem 0;
+  }
+
+  .formula-box {
+    background: var(--blue-dark);
+    color: #e8dfc8;
+    padding: 1rem 1.25rem;
+    border-radius: 2px;
+    margin-bottom: 1.25rem;
+    font-size: 13.5px;
+  }
+  .formula-box .f-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #a09070; margin-bottom: 0.5rem; }
+  .formula-box p { margin-bottom: 0.3rem; line-height: 1.6; }
+  .formula-box strong { color: #f0c060; }
+</style>
+</head>
+<body>
+
+<div class="masthead">
+  <div class="masthead-sub">O-Level Pakistan Studies 2059/1 · CAIE May/June 2026</div>
+  <h1>Section 1 Study Guide</h1>
+  <hr class="masthead-rule">
+  <div style="font-size:13px;color:var(--muted);font-style:italic;">Mughal Decline &nbsp;·&nbsp; War of Independence 1857 &nbsp;·&nbsp; Islamic Reformers</div>
+</div>
+
+<nav class="nav-strip">
+  <button class="nav-btn active" onclick="show('mughal')">1. Mughal Decline</button>
+  <button class="nav-btn" onclick="show('1857')">2. War of Independence</button>
+  <button class="nav-btn" onclick="show('swu')">3. Shah Waliullah</button>
+  <button class="nav-btn" onclick="show('syed')">4. Sir Syed Ahmed Khan</button>
+  <button class="nav-btn" onclick="show('hsu')">5. Haji Shariat Ullah</button>
+  <button class="nav-btn" onclick="show('howto')">★ How to Answer</button>
+</nav>
+
+<!-- ══════════ TOPIC 1: MUGHAL DECLINE ══════════ -->
+<div class="topic active" id="mughal">
+  <div class="topic-header">
+    <div class="topic-num">01</div>
+    <div>
+      <div class="topic-title">The Decline of the Mughal Empire</div>
+      <div class="topic-sub">Post-Aurangzeb · British arrival · Rise of regional powers</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Internal causes of decline</div>
+      <ul>
+        <li><strong>Aurangzeb's policies</strong> — re-imposed jizya tax on Hindus, destroyed temples; created massive Hindu & Sikh resentment</li>
+        <li><strong>Weak successors</strong> — 12 emperors in 30 years after 1707; court intrigues, incompetence</li>
+        <li><strong>Wars of succession</strong> — princes fought each other, draining the treasury</li>
+        <li><strong>Empty treasury</strong> — decades of war (Deccan campaign cost millions); state could not pay army</li>
+        <li><strong>Corruption</strong> — nobles became self-serving; land revenues mismanaged</li>
+        <li><strong>Loss of central control</strong> — governors declared independence (Hyderabad, Bengal, Awadh)</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">External causes of decline</div>
+      <ul>
+        <li><strong>Nadir Shah's invasion (1739)</strong> — sacked Delhi, took the Peacock Throne & Koh-i-Noor; killed 30,000 people; devastating psychologically</li>
+        <li><strong>Ahmad Shah Durrani</strong> — invaded 8 times; Third Battle of Panipat 1761 broke Maratha power</li>
+        <li><strong>Maratha expansion</strong> — filled the power vacuum; threatened Mughal heartland</li>
+        <li><strong>Rise of Sikhs</strong> — established autonomous rule in Punjab</li>
+        <li><strong>British EIC</strong> — exploited political chaos; Battle of Plassey 1757 gave them Bengal</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>How questions appear on this topic</h3>
+
+  <div class="q-box">
+    <div class="q-label">Typical 3-mark (a) question</div>
+    <div class="q-text">"According to Source A, what happened after the death of Aurangzeb?"</div>
+    <span class="marks">[3 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 3 marks</div>
+    <p>Pick <strong>3 separate points directly from the source</strong>. Do not add outside knowledge. Write one sentence per point.</p>
+    <p><em>Example: "According to Source A, after Aurangzeb's death, the Hindus began to exercise greater control over parts of the subcontinent. Muslim power began to disintegrate. Many Muslims felt strongly about reviving Islam."</em></p>
+  </div>
+
+  <div class="q-box">
+    <div class="q-label">Typical 7-mark (c) question</div>
+    <div class="q-text">"Why did the Mughal Empire decline after 1707?"</div>
+    <span class="marks">[7 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 7 marks</div>
+    <p>Write <strong>3–4 developed points</strong>. Each point = identify the reason + explain how it caused decline. No need for conclusion at 7 marks.</p>
+    <p><em>Example point: "Aurangzeb's religious policies created serious resentment. He re-imposed the jizya tax on Hindus and destroyed Hindu temples, which turned large sections of the population against Mughal rule. This made it much harder for his weak successors to maintain loyalty across the empire."</em></p>
+  </div>
+
+  <div class="tip-box">
+    <div class="t-label">Examiner tip</div>
+    <p>For decline questions, always link your point back to HOW it weakened the empire — don't just list facts. The examiner wants cause → effect reasoning.</p>
+  </div>
+
+  <div class="q-box">
+    <div class="q-label">Typical 14-mark (c) essay</div>
+    <div class="q-text">"Were the weak successors the main reason for the decline of the Mughal Empire? Explain your answer."</div>
+    <span class="marks">[14 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 14 marks</div>
+    <p><strong>Agree side:</strong> Yes — 12 emperors in 30 years, wars of succession drained treasury, court intrigues paralysed government, no strong leader to hold empire together.</p>
+    <p><strong>Disagree side:</strong> No — Aurangzeb himself planted the seeds (religious policies, empty treasury from Deccan wars). External invasions (Nadir Shah 1739, Marathas) were equally damaging. British EIC exploited the chaos.</p>
+    <p><strong>Conclusion:</strong> Weak successors accelerated the decline, but Aurangzeb's policies and external invasions were the root causes — the empire was already fatally weakened before the successors took over.</p>
+  </div>
+</div>
+
+<!-- ══════════ TOPIC 2: WAR OF INDEPENDENCE 1857 ══════════ -->
+<div class="topic" id="1857">
+  <div class="topic-header">
+    <div class="topic-num">02</div>
+    <div>
+      <div class="topic-title">War of Independence 1857</div>
+      <div class="topic-sub">Causes · Events · Reasons for failure · Consequences</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Causes — remember PERM</div>
+      <ul>
+        <li><strong>P — Political:</strong> Doctrine of Lapse (Dalhousie); annexation of Awadh 1856 angered nobles & soldiers; no Indian in senior positions</li>
+        <li><strong>E — Economic:</strong> Indian handicrafts destroyed by cheap British goods; heavy land taxes ruined farmers; drain of wealth to Britain</li>
+        <li><strong>R — Religious/Social:</strong> Fear of forced conversion to Christianity; missionaries active; greased cartridges (cow/pig fat) offended both Hindus & Muslims</li>
+        <li><strong>M — Military:</strong> Indian sepoys paid less than British soldiers; "General Service Enlistment Act" forced overseas service (religiously unacceptable); Enfield rifle cartridge controversy was the spark</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">Reasons for failure</div>
+      <ul>
+        <li><strong>No unified leadership</strong> — Bahadur Shah Zafar was old & weak; no single commander</li>
+        <li><strong>No common goal</strong> — some wanted Mughal rule restored, others wanted regional independence</li>
+        <li><strong>Poor weapons</strong> — swords vs British rifles and artillery</li>
+        <li><strong>Not nationwide</strong> — Bengal, Bombay, Madras armies mostly stayed loyal to British</li>
+        <li><strong>Sikhs & Gurkhas fought for British</strong> — recent enemies of Mughals</li>
+        <li><strong>British reinforcements</strong> — troops arrived from Crimea; modern communications (telegraph) coordinated response</li>
+        <li><strong>No foreign help</strong> — no outside power intervened on rebels' side</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="card" style="margin-bottom:1.25rem;">
+    <div class="card-title">Consequences of the war</div>
+    <ul style="columns:2;gap:1.5rem;">
+      <li>East India Company abolished — Crown took direct control (1858)</li>
+      <li>Bahadur Shah Zafar exiled to Burma — end of Mughal dynasty</li>
+      <li>Indian army reorganised — more British officers, fewer Indian soldiers</li>
+      <li>Muslims blamed — lost land, jobs, political influence</li>
+      <li>Hindu-Muslim relations damaged</li>
+      <li>Sir Syed Ahmed Khan emerged — argued Muslims must cooperate with British to survive</li>
+    </ul>
+  </div>
+
+  <h3>How questions appear on this topic</h3>
+
+  <div class="q-box">
+    <div class="q-label">Typical 5-mark (b) question — source based</div>
+    <div class="q-text">"What does Source B tell us about the War of Independence?"</div>
+    <span class="marks">[5 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 5 marks</div>
+    <p>Describe <strong>what you see in the image/source</strong> + infer <strong>2 further points</strong> from it. Use phrases like "This suggests…" or "This shows that…"</p>
+    <p><em>Example: "Source B shows Indian soldiers fighting British troops. This suggests the war involved both Indian infantry and cavalry. The scale of the fighting suggests it was widespread and not a minor local rebellion. The presence of burning buildings suggests the war caused significant destruction to civilian areas."</em></p>
+  </div>
+
+  <div class="q-box">
+    <div class="q-label">Typical 7-mark question</div>
+    <div class="q-text">"Why did the War of Independence fail in 1857?"</div>
+    <span class="marks">[7 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 7 marks</div>
+    <p>Give <strong>3 developed reasons</strong>. Each needs a specific detail.</p>
+    <p><em>Example point: "One key reason was the lack of unified leadership. Bahadur Shah Zafar, who was proclaimed leader, was an old and frail emperor with no real military experience. Without a strong commander to coordinate attacks, Indian forces were unable to mount an effective sustained campaign against the well-organised British army."</em></p>
+  </div>
+
+  <div class="q-box">
+    <div class="q-label">Typical 10-mark (d) question</div>
+    <div class="q-text">"Economic factors were more important than military factors in causing the War of Independence 1857. Do you agree? Explain."</div>
+    <span class="marks">[10 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 10 marks</div>
+    <p><strong>Agree (economic factors):</strong> Destruction of Indian industries, heavy land taxes, drain of wealth to Britain created widespread poverty and resentment across all classes — both peasants and former rulers lost economically.</p>
+    <p><strong>Disagree (military factors):</strong> The immediate trigger was the greased cartridge issue — a military grievance. Indian sepoys had real, immediate day-to-day complaints: lower pay, overseas service, cultural insults. Without the sepoys' revolt, the economic grievances alone would not have started the war.</p>
+    <p><strong>Conclusion + your justified view:</strong> Both were essential. Economic factors built long-term resentment across society, but military grievances provided the spark and the organised force. Without the army's involvement, there would have been no organised uprising.</p>
+  </div>
+
+  <div class="tip-box">
+    <div class="t-label">Examiner tip — 10 and 14 mark essays</div>
+    <p>You MUST argue BOTH sides and give a justified conclusion. Simply agreeing or disagreeing without considering the other side caps you at level 3 (~6 marks). Your conclusion should explain WHY you chose your side, not just repeat it.</p>
+  </div>
+</div>
+
+<!-- ══════════ TOPIC 3: SHAH WALIULLAH ══════════ -->
+<div class="topic" id="swu">
+  <div class="topic-header">
+    <div class="topic-num">03</div>
+    <div>
+      <div class="topic-title">Shah Waliullah (1703–1762)</div>
+      <div class="topic-sub">Revival of Islam · Translation of Quran · Political reform</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Why was revival needed?</div>
+      <ul>
+        <li>Mughal decline left Muslims politically weak</li>
+        <li>Hindu customs had crept into Muslim practice (un-Islamic innovations)</li>
+        <li>Most Muslims could not read the Quran — it was only in Arabic</li>
+        <li>Muslim scholars were divided into conflicting sects</li>
+        <li>Political chaos made Muslims demoralised and directionless</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">His contributions</div>
+      <ul>
+        <li><strong>Translated the Quran into Persian</strong> — first time ordinary educated Muslims could read it; massively controversial but vital</li>
+        <li><strong>His sons translated it into Urdu</strong> — reached the masses</li>
+        <li><strong>Wrote Hujjat-ul-Baligha</strong> — explained Islamic law in rational terms</li>
+        <li><strong>United Muslim sects</strong> — tried to reconcile Sunni divisions (Hanafi, Shafi etc.)</li>
+        <li><strong>Political action</strong> — invited Ahmad Shah Durrani to defeat Marathas at Panipat 1761</li>
+        <li><strong>Inspired later movements</strong> — his ideas influenced Syed Ahmad Barelvi's Jihad Movement</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>How questions appear</h3>
+
+  <div class="q-box">
+    <div class="q-label">Typical 7-mark question</div>
+    <div class="q-text">"Why did Shah Waliullah try to revive Islam in the subcontinent?"</div>
+    <span class="marks">[7 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer</div>
+    <p>Give 3 developed reasons — each must explain both WHY he was motivated AND what he did about it.</p>
+    <p><em>Example: "Shah Waliullah was deeply concerned that ordinary Muslims had no access to the Quran. Since it existed only in Arabic, most Muslims — including educated ones — could not read or understand it. This meant they were disconnected from their own faith. In response, he translated the Quran into Persian so that the educated classes could read it directly, a step that was controversial but proved enormously influential."</em></p>
+  </div>
+
+  <div class="q-box">
+    <div class="q-label">Typical 14-mark essay</div>
+    <div class="q-text">"Did Shah Waliullah contribute more to the spread of Islam than anyone else in the subcontinent before 1850? Explain."</div>
+    <span class="marks">[14 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer</div>
+    <p><strong>Yes — Shah Waliullah:</strong> Translation of Quran was revolutionary; united sects; political vision; inspired future reformers. His influence lasted generations.</p>
+    <p><strong>No — others were also important:</strong> Syed Ahmad Barelvi took his ideas into action (Jihad Movement against Sikhs). Haji Shariat Ullah mobilised Bengali peasants through the Faraizi Movement. Sir Syed Ahmed Khan later modernised Muslim education.</p>
+    <p><strong>Conclusion:</strong> Shah Waliullah's intellectual foundations were the most lasting — without his translation and writings, later reformers would have had no ideological base. He was the most important.</p>
+  </div>
+</div>
+
+<!-- ══════════ TOPIC 4: SIR SYED AHMED KHAN ══════════ -->
+<div class="topic" id="syed">
+  <div class="topic-header">
+    <div class="topic-num">04</div>
+    <div>
+      <div class="topic-title">Sir Syed Ahmed Khan (1817–1898)</div>
+      <div class="topic-sub">Aligarh Movement · Two-Nation Theory · Muslim modernisation</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Context — why was he important?</div>
+      <ul>
+        <li>After 1857, Muslims were blamed by British; lost jobs & land</li>
+        <li>Muslims boycotted British schools → fell behind Hindus educationally</li>
+        <li>Muslim share of government jobs collapsed</li>
+        <li>Sir Syed believed Muslims must modernise or become permanently marginalised</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">His contributions</div>
+      <ul>
+        <li><strong>MAO College, Aligarh (1875)</strong> — Oxford-style college; English + Islamic education; produced Muslim professionals</li>
+        <li><strong>Scientific Society (1863)</strong> — translated Western books into Urdu</li>
+        <li><strong>Wrote "Causes of the Indian Revolt"</strong> — defended Muslims, said British policies caused 1857</li>
+        <li><strong>Two-Nation Theory</strong> — first argued Hindus and Muslims are two separate nations; cannot share a country; seed of Pakistan Movement</li>
+        <li><strong>Opposed Indian National Congress (1885)</strong> — said it was Hindu-dominated; Muslims should not join</li>
+        <li><strong>Urged loyalty to British</strong> — pragmatic; cooperation not confrontation</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>How questions appear</h3>
+
+  <div class="q-box">
+    <div class="q-label">Typical 7-mark question</div>
+    <div class="q-text">"Why did Sir Syed Ahmed Khan try to improve relations between Muslims and the British?"</div>
+    <span class="marks">[7 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer</div>
+    <p><em>Key point example: "After 1857, the British blamed Muslims for the uprising and as a result Muslims lost jobs in the civil service and the military, and faced hostility in general. Sir Syed realised that if Muslims continued to be seen as enemies of the Crown, they would fall further behind educationally and politically. He therefore argued that cooperating with the British was the only practical way for Muslims to protect their interests."</em></p>
+  </div>
+
+  <div class="tip-box">
+    <div class="t-label">Link to later history</div>
+    <p>Examiners love it when you connect Sir Syed's Two-Nation Theory directly to later events — the formation of the Muslim League (1906), the Lahore Resolution (1940), and ultimately the creation of Pakistan (1947). This shows big-picture thinking and earns top-level marks.</p>
+  </div>
+</div>
+
+<!-- ══════════ TOPIC 5: HAJI SHARIAT ULLAH ══════════ -->
+<div class="topic" id="hsu">
+  <div class="topic-header">
+    <div class="topic-num">05</div>
+    <div>
+      <div class="topic-title">Haji Shariat Ullah (1781–1840)</div>
+      <div class="topic-sub">Faraizi Movement · Bengal · Anti-British resistance</div>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">Background & context</div>
+      <ul>
+        <li>Bengal Muslims were poor peasants (ryots) under Hindu zamindars and British indigo planters</li>
+        <li>Spent 20 years in Mecca; returned deeply influenced by Wahhabi reform</li>
+        <li>Found Bengal Muslims practising Hindu customs, ignoring Islamic duties</li>
+        <li>British rule meant Friday prayers & Eid were politically restricted in his view</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">The Faraizi Movement</div>
+      <ul>
+        <li><strong>"Faraizi"</strong> = those who perform the fara'id (obligatory Islamic duties)</li>
+        <li>Declared Bengal a "dar-ul-harb" (land of war) — not a proper Muslim land under British rule</li>
+        <li>Therefore suspended Friday and Eid congregational prayers (controversial ruling)</li>
+        <li>Organised Bengali Muslim peasants — social & religious reform</li>
+        <li>Son <strong>Dudu Miyan</strong> made it more political — resisted zamindars & British</li>
+        <li>British arrested and imprisoned Haji Shariat Ullah multiple times</li>
+      </ul>
+    </div>
+  </div>
+
+  <h3>How questions appear</h3>
+
+  <div class="q-box">
+    <div class="q-label">Typical 4-mark (a) question</div>
+    <div class="q-text">"What was the Faraizi Movement?"</div>
+    <span class="marks">[4 marks]</span>
+  </div>
+  <div class="answer-box">
+    <div class="a-label">How to answer — 4 marks</div>
+    <p>Describe: what it was, who founded it, what it aimed to do, one specific action. Keep it factual and precise.</p>
+    <p><em>Example: "The Faraizi Movement was founded by Haji Shariat Ullah in Bengal in the early 19th century. Its name came from 'fara'id' meaning obligatory Islamic duties. It aimed to purify Muslim practice by removing Hindu customs. Haji Shariat Ullah also organised Muslim peasants against the oppression of Hindu zamindars and British indigo planters."</em></p>
+  </div>
+
+  <div class="tip-box">
+    <div class="t-label">Comparison question warning</div>
+    <p>Sometimes the 14-mark question asks you to compare all three reformers (Shah Waliullah, Sir Syed, Haji Shariat Ullah) and judge who contributed most. Prepare a clear argument for each and pick one to defend with reasons. Shah Waliullah is usually the safest choice as "most important" since his ideas underpinned all later movements.</p>
+  </div>
+</div>
+
+<!-- ══════════ HOW TO ANSWER ══════════ -->
+<div class="topic" id="howto">
+  <div class="topic-header">
+    <div class="topic-num">★</div>
+    <div>
+      <div class="topic-title">How to Answer Every Question Type</div>
+      <div class="topic-sub">Mark scheme logic · Structures · Common mistakes</div>
+    </div>
+  </div>
+
+  <div class="formula-box">
+    <div class="f-title">The Cambridge mark levels — Paper 1</div>
+    <p><strong>3 marks (a):</strong> 3 points directly from the source. One sentence each. No outside knowledge needed.</p>
+    <p><strong>4 marks (a):</strong> Describe an event/term. What + who + when + significance.</p>
+    <p><strong>5 marks (b):</strong> Source B (usually image). Describe + 2–3 inferences. Use "this suggests…"</p>
+    <p><strong>7 marks (b/c):</strong> 3 developed points. Each = reason + explanation + specific detail.</p>
+    <p><strong>10 marks (d):</strong> Both sides argued + conclusion with your justified view.</p>
+    <p><strong>14 marks (c):</strong> Both sides argued in depth + strong justified conclusion. Minimum 3 points per side.</p>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title">7-mark formula</div>
+      <ul>
+        <li><strong>Point:</strong> State the reason clearly</li>
+        <li><strong>Explain:</strong> Why did this cause / result in the event?</li>
+        <li><strong>Evidence:</strong> Give a specific fact, name, date</li>
+        <li>Repeat x3. No intro or conclusion needed.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title">14-mark formula (PEE×3 + PEE×3 + Conclusion)</div>
+      <ul>
+        <li><strong>Side A</strong> (agree) — 3 PEE points</li>
+        <li><strong>Side B</strong> (disagree) — 3 PEE points</li>
+        <li><strong>Conclusion</strong> — pick a side, justify WHY that side outweighs the other</li>
+        <li>Word "however" or "on the other hand" to signal the turn</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="two-col">
+    <div class="card">
+      <div class="card-title" style="color:var(--accent);">Common mistakes to avoid</div>
+      <ul>
+        <li>Writing only one side for 14-mark questions → max 8/14</li>
+        <li>Listing facts without explaining how they relate to the question</li>
+        <li>Adding outside knowledge in the 3-mark source question</li>
+        <li>Vague conclusions like "both were important" — pick a side!</li>
+        <li>Forgetting specific names/dates in 7-mark answers</li>
+      </ul>
+    </div>
+    <div class="card">
+      <div class="card-title" style="color:var(--green);">Phrases that score marks</div>
+      <ul>
+        <li>"This was significant because…"</li>
+        <li>"As a result of this, Muslims…"</li>
+        <li>"This shows that…" (source questions)</li>
+        <li>"However, a more important factor was…"</li>
+        <li>"Overall, [X] was the most important because… whereas [Y] only…"</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<script>
+function show(id) {
+  document.querySelectorAll('.topic').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  const btns = document.querySelectorAll('.nav-btn');
+  const map = ['mughal','1857','swu','syed','hsu','howto'];
+  btns[map.indexOf(id)].classList.add('active');
+  window.scrollTo({top:0, behavior:'smooth'});
+}
+</script>
+</body>
+</html>
